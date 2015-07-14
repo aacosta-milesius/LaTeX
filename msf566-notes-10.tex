@@ -1,0 +1,211 @@
+\section{Multivariate Time Series Analysis}
+\paragraph{Primary Text Reading.} \citeA[chap. 8]{tsay2005aft}\index{Tsay, Ruey}
+and \citeA{urga2007cfe}
+
+The analysis of \fts{} using a single variable is both unrealistic and deceptive in its simplicity. Financial markets are interrelated and an effect on one will cause some rippling effect into another, and perhaps back onto the original.
+
+Each time series among multiple series is referred to as a \emph{component}. Because of this usage of multiple series that are linked by time, we often make extensive use of matrices and linear algebra to solve problems in this area.
+\margincomment[red]{A review of matrix algebra in section \ref{linear-algebra}\index{linear algebra} may be necessary to understand multivariate \fts{}.}
+It is standard mathematical convention to use boldface (and usually capital letters) to refer to a matrix, such as $\mathbf{A}$ or $\mathbf{\Gamma}$.
+
+We start by looking at two series, which are a \emph{bivariate} time series,
+\begin{equation}
+\mathbf{X}_t =
+	\begin{bmatrix}
+	x_{1t} \\
+	x_{2t} \\
+	\end{bmatrix}.
+\label{eq:bi-ts}
+\end{equation}
+
+The data in \eqref{eq:bi-ts} are \{$x_1, x_2, \ldots, x_T\}$, some examples are,
+\begin{itemize}
+	\item U.S. quarterly GDP and unemployment rate series
+	\item The daily closing prices of real estate ETF (iShares Dow Jones and Vangard REIT).
+\end{itemize}
+
+\subsection{Weak Stationarity and Cross-Correlation Matrices}\label{crosscorrmatr}
+Recall from Section~\ref{Stationarity} that a $k$-dimensional time series $r_t$ is \emph{weakly stationary} if its first and second moments are time-invariant. That being the case, we know the expected value and covariance of $\mathbf{X}_t$,
+\[
+E(\mathbf{X}_t) = \mu \quad \text{Cov}(\mathbf{X}_t, \mathbf{X}_{y-j}) = \mathbf{\Gamma}_j
+\]
+which are time-invariant.
+
+\paragraph{Autocovariant matrix.} An autocovariant matrix of lag-$\ell$ has the following properties,
+\[
+\mathbf{\Gamma}_{\ell} = E\big[ (\mathbf{X}_t - \mathbf{\mu}) (\mathbf{X}_{t-\ell}-\mathbf{\mu})' \big]
+\]
+
+\begin{equation}
+=
+\begin{bmatrix}
+E(x_{1t}-\mu_1)(x_{1,t-\ell}-\mu_1) & E(x_{1t}-\mu_1)(x_{1,t-\ell}-\mu_2) \\
+E(x_{2t}-\mu_1)(x_{1,t-\ell}-\mu_1) & E(x_{2t}-\mu_1)(x_{2,t-\ell}-\mu_2)
+\end{bmatrix}
+\end{equation}
+
+\[
+=
+\begin{bmatrix}
+\Gamma_{11}(\ell) & \Gamma_{12}(\ell) \\
+\Gamma_{21}(\ell) & \Gamma_{22}(\ell).
+\end{bmatrix}
+\]
+which is not symmetric if $\ell \ne 0$. Also, consider $\mathbf{\Gamma}$,
+\begin{itemize}
+\item $\Gamma_{12}: \text{Cov}(x_{1t},x_{2,t-1})$ 
+\item $\Gamma_{21}: \text{Cov}(x_{2t},x_{1,t-1})$ 
+\end{itemize}
+
+Let the diagonal matrix $\mathbf{D}$ be
+\begin{equation}
+\mathbf{D} = 
+\begin{bmatrix}
+\text{std}(x_{1t}) & 0 \\
+0 & \text{std}(x_{2t})
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sqrt{\Gamma_{11}(0)} & 0 \\
+0 & \sqrt{\Gamma_{22}(0)}
+\end{bmatrix}.
+\label{eq:diag-mat-D}
+\end{equation}
+
+The \emph{lead-lag relationship} is very important in multivariate \fts{} analysis. We use cross-correlation matrices\index{cross-correlation matrices} to measure the strength of linear dependence between components.
+
+\paragraph{Cross-Correlation Matrix}
+\[
+\mathbf{\rho}_{\ell} = \mathbf{D}^{-1} \mathbf{\Gamma}_{\ell} \mathbf{D}^{-1}
+\]
+Thus, $\rho_{ij}(\ell)$ is the cross-correlation between $x_{it}$ and $x_{j,t-\ell}$ using matrix $\mathbf{D}$ \eqref{eq:diag-mat-D}.
+
+\paragraph{Testing for Serial Dependence.}
+The multivariate version of Ljung-Box $Q(m)$ statistic.
+\[
+H_0: \mathbf{\rho}_1 = \cdots \mathbf{\rho}_m = 0 \\
+H_a: \mathbf{\rho}_1 \ne 0
+\]
+for some $i$.
+\[
+Q_2(m)=T^2 \sum^m_{\ell=1} \frac{1}{T-\ell} tr(\hat{\mathbf{\Gamma}}'_{\ell} \hat{\mathbf{\Gamma}}^{-1}_{0} \hat{\mathbf{\Gamma}}_{\ell} \hat{\mathbf{\Gamma}}^{-1}_{0}) 
+\]
+which is $\chi^2_{k^2 m}$, and $tr$ denotes the sum of the diagonal elements.
+
+\subsection{Vector Autoregressive Models}\index{vector autoregressive models}
+VAR(1) model for two return series,
+\[
+\begin{bmatrix}
+r_{1t} \\ r_{2t}
+\end{bmatrix}=
+\begin{bmatrix}
+\phi_{10} \\ \phi_{20}
+\end{bmatrix} +
+\begin{bmatrix}
+\phi_{11} & \phi_{12} \\ 
+\phi_{21} & \phi_{22}
+\end{bmatrix}
+\begin{bmatrix}
+r_{1,t-1} \\ r_{2,t-1}
+\end{bmatrix} +
+\begin{bmatrix}
+a_{1,t} \\ a_{2,t}
+\end{bmatrix},
+\]
+where $\mathbf{a}_t=(a_{1t},a_{2t})'$ is a sequence of iid bivariate normal random vectors with mean zero and covariance matrix,
+\[
+\text{Cov}(\mathbf{a}_t) \equiv \mathbf{\Sigma}=
+\begin{bmatrix}
+\sigma_{11} & \sigma_{12} \\
+\sigma_{21} & \sigma_{22}
+\end{bmatrix}
+\]
+where $\sigma_{12}=\sigma_{21}$.
+
+Rewrite the model as
+\begin{eqnarray*}
+r_{1t}= \phi_{10} + \phi_{11} + r_{1,t-1} + \phi_{12} r_{2,t-1} + a_{1t} \\
+r_{2t}= \phi_{20} + \phi_{21} + r_{1,t-1} + \phi_{22} r_{2,t-1} + a_{1t}
+\end{eqnarray*}
+Thus, $\phi_{11}$ and $\phi_{12}$ denote the dependence of $r_{1t}$ on the past returns $r_{1,t-1}$ and $r_{2,t-1}$, respectively.
+
+\paragraph{Building a VAR($p$) Model.} One of the most difficult parts of multivariate time series analysis is validating the model chosen. Use can use either AIC,
+\[
+AIC(i)=\ln(|\tilde{\mathbf{\Sigma}}_i|) + \frac{2k^2i}{T},
+\]
+or BIC,
+\[
+BIC(i)=\ln(|\tilde{\mathbf{\Sigma}}_i|) + \frac{k^2i \ln(T)}{T}.
+\]
+
+Estimation can use the same ordinary least squares methods that were employed in univariate \fts{}. Model checking is also subject to the familiar visual and numerical tests that helped us validate normality, variance, and other measures. Forecasting is also similar to the univariate case, except more complex since it includes multiple time series (\emph{factors}).
+
+%Co-integration Basic ideas 
+
+%$x_{1t}$ and $x_{2t}$ are unit-root nonstationary  a linear combination of $x_{1t}$ and $x_{2t}$ is unit-root stationary 
+
+% That is, $x_{1t}$ and $x_{2t}$ share a single unit root! 
+
+% Why is it of interest? 
+% Stationary series is mean reverting. 
+% Long term forecasts of the linear combination converge to a mean value, implying that the long-term forecasts of $x_{1t}$ and $x_{2t}$ must be linearly related. 
+% This mean-reverting property has many applications. For instance, pairs trading in finance. 
+
+
+\subsection{Vector Moving-Average Models}\index{vector moving-average models}
+The multivariate form of the Box-Jenkins univariate models is sometimes called the ARMAV model, for \emph{autoregressive moving average vector} or simply vector ARMA process.
+\margincomment[red]{If each time series observation is a vector of numbers, you can model them using a multivariate form of the Box-Jenkins model.}
+
+The ARMAV model for a stationary multivariate time series, with a zero mean vector, represented by,
+\[
+X_t = (x_{1t}, x_{2t}, \ldots, x_{nt})^T  \quad -\infty < t < \infty
+\]
+is of the form
+\[
+x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \cdots + \phi_p x_{t-p} + a_{t} -  \theta_1 a_{t-1} - \theta_2 a_{t-2} - \cdots - \theta q a_{t-q},
+\]
+where $x_t$ and $a_t$ are $n \times 1$ column vectors with $a_t$ representing multivariate white noise,
+\begin{eqnarray*}
+\phi_k &=& \{\phi_{k,jj}\}, \quad k = 1,2, \ldots ,p \\
+\theta_k &=& \{\theta_{k,jj}\}, \quad k = 1,2, \ldots ,q
+\end{eqnarray*}
+
+%\subsubsection{Building a VMA($q$) Model}
+
+\subsection{Vector ARMA Models}
+Although creating vector ARMA or VARMA models is an extension of univariate ARMA, we encounter an \emph{identifiability} problem. An example given is the VMA(1) model,
+\[
+\begin{bmatrix}
+r_{1t} \\ r_{2t}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{1t} \\ a_{2t}
+\end{bmatrix} -
+\begin{bmatrix}
+0 & 2 \\ 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+a_{1,t-1} \\ a_{2,t-1}
+\end{bmatrix}
+\]
+is identical to the VAR(1) model,
+\[
+\begin{bmatrix}
+r_{1t} \\ r_{2t}
+\end{bmatrix} -
+\begin{bmatrix}
+0 & -2 \\ 0 & \phantom{-}0
+\end{bmatrix}
+\begin{bmatrix}
+r_{1,t-1} \\ r_{2,t-1}
+\end{bmatrix}
+\begin{bmatrix}
+a_{1t} \\ a_{2t}
+\end{bmatrix}.
+\]
+
+%\subsection{Building a VARMA$(p,q)$ Model}
+%\texttt{http://support.sas.com/rnd/app/da/new/801ce/iml/chap1/sect13.htm} \\
+% VARMACOV, VARMALIK, VARMASIM, VNORMAL, and VTSROOT.
+
+%\subsection{Cointegrated VAR Models}

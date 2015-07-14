@@ -1,0 +1,197 @@
+\section{State-Space Models and Kalman Filters}
+\paragraph{Primary Text Reading.} \citeA[chap. 11]{tsay2005aft}\index{Tsay, Ruey}
+
+\subsection{State-Space Models}
+Having covered ARIMA models in Section~\ref{ARMIA models}, we can examine state-space models, which provide a flexible approach to \fts{} by simplifying maximum likelihood estimations and by handling missing data values. much of the emphasis in this section is on smoothing methods. To begin, a univariate time series $y_t$,
+\begin{eqnarray}
+y_t &=& \mu_t + e_t, \quad e_t \sim N(0,\sigma^2_e), \label{eq:local-trend-y} \\
+\mu_{t+1} &=& \mu_t + \eta_t, \quad \eta_t \sim N(0,\sigma^2_{\eta}), \label{eq:local-trend-mu}
+\end{eqnarray}
+where $\{e_t\}$ and $\{\eta_t\}$ are two independent Gaussian white noise series and $t=\{1, \ldots, T\}$. The model described in \eqref{eq:local-trend-y} and \eqref{eq:local-trend-mu} comprise a \emph{special linear Gaussian state-space model} and can be applied to modeling asset price volatility. The variable $\mu_t$ is the \emph{state} of the system at time $t$, which is not directly observed. The data $y_t$ and the state $\mu_t$ are linked through \eqref{eq:local-trend-y}.
+
+\paragraph{Relationship to ARIMA Model.} If there is no measurement error in \eqref{eq:local-trend-y}, meaning $\sigma_e=0$, then $y_t=\mu_t$, and we have an ARIMA(0,1,0) model. If $\sigma_e >0$ then, measurement error exists, and we have an ARIMA(0,1,1) model which satisfies
+\[
+(1-B)y_t = (1-\theta B)a_t,
+\]
+where $\{a_t\}$ is a Gaussian white noise with mean zero and variance $\sigma^2_a$. The values of $\theta$ and $\sigma^2_a$ are determined by $\sigma_e$ and $\sigma_{\eta}$.
+
+\paragraph{Statistical Inference.}
+State-space models use three kinds of inference,
+\begin{enumerate}
+\item \textbf{Filtering}. Filtering means to recover the state variable $\mu_t$ given $F_t$, that is, to remove the measurement errors from the data.
+\item \textbf{Prediction}. Predction means to forecast $\mu_{t+h}$ or $y_{t+h}$ for $h>0$ given $F_t$, where $t$ is the forecast origin.
+\item \textbf{Smoothing}. Smoothing is to estimate $\mu_t$ given $F_T$ where $T>t$.
+\end{enumerate}
+
+\subsection{Kalman Filters}
+The \emph{Kalman filter}\index{Kalman filter} is an efficient recursive filter that estimates the state of a linear dynamic system from a series of noisy measurements. It is used in a wide range of engineering applications from radar to computer vision, and is an important topic in control theory and control systems engineering. Together with the linear-quadratic regulator (``LQR''), the Kalman filter solves the linear-quadratic-Gaussian control problem (``LQG'').
+\margincomment[red]{A good R package to analyze Kalman filters is \texttt{sspir} ``State Space Models in R''.}
+\rpkg{sspir}\index{R language}
+The Kalman filter, the linear-quadratic regulator and the linear-quadratic-Gaussian controller are solutions to what probably are the most fundamental problems in control theory.
+
+We will use the R package \texttt{sspir} developed by \citeA{sspir-R} to demonstrate \emph{forward filtering} and \emph{backward sampling} of a time series taken from \citeA[pp. 40--44]{west1997bfa}. The graphical results are displayed in Figure~\ref{figure:kalman}. The sharp changes in the underlying time series has been filtered by looking ahead at changes, and smoothed by examining a moving average, much the same way we did in ARIMA models. The ten simulations (\emph{in red}) are drawn from the conditional distribution of $\{\theta_1, \ldots, \theta_{10}\}$ given $\{y_1, \ldots ,y_{10}\}$ in a Gaussian state space model using the \texttt{ksimulate} function. 
+\ecaption{Kalman Filtering and Smoothing in R}
+\begin{verbatim}
+     # ksimulate: Forward filtering, Backward sampling
+     library(sspir)
+     data(kurit)
+     
+     m1 <- SS(kurit)
+     phi(m1) <- c(100,5)
+     m0(m1) <- matrix(130)
+     C0(m1) <- matrix(400)
+     
+     m1 <- kfilter(m1)
+     m1.s <- smoother(m1)
+     sim <- ksimulate(m1,10)
+     
+     plot(kurit, main="Kalman Filtering and Smoothing")
+     for (i in 1:10)
+         lines(sim[,,i],lty=2,col=2)
+     lines(smoother(m1)$m,lwd=2)
+\end{verbatim}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.5]{kalman}
+  \caption[Kalman Filtering and Smoothing]{First, we run the Kalman filter to produce the conditional means and variances of the state vectors given the current time point. Next, based on the output from \texttt{kfilter}, the \texttt{smoother} function runs the Kalman smoother to produce the conditional means and variances of the state vectors given all observations. Finally, we draw 10 samples from the conditional distribution of $\{\theta_1, \ldots, \theta_{10}\}$ given $\{y_1, \ldots ,y_{10}\}$ in a Gaussian state space model.}
+  \label{figure:kalman}
+\end{figure}
+
+\paragraph{Underlying Dynamic System Model.}
+Kalman filters are based on linear dynamical systems discretized in the time domain. They are modeled on a Markov chain built on linear operators perturbed by Gaussian noise. The state of the system is represented as a vector of real numbers. At each discrete time increment, a linear operator is applied to the state to generate the new state, with some noise mixed in, and optionally some information from the controls on the system if they are known. Then, another linear operator mixed with more noise generates the visible outputs from the hidden state. The Kalman filter may be regarded as analogous to the hidden Markov model, with the key difference that the hidden state variables take values in a continuous space (as opposed to a discrete state space as in the hidden Markov model). Additionally, the hidden Markov model can represent an arbitrary distribution for the next value of the state variables, in contrast to the Gaussian noise model that is used for the Kalman filter. There is a strong duality between the equations of the Kalman Filter and those of the hidden Markov model.
+
+In order to use the Kalman filter to estimate the internal state of a process given only a sequence of noisy observations, we must model the process in accordance with the framework of the Kalman filter. This means specifying the matrices $\mathbf{F}_k, \mathbf{H}_k, \mathbf{Q}_k, \mathbf{R}_k$, and sometimes $\mathbf{B}_k$ for each time-step $k$ as described below.
+
+The Kalman filter model assumes the true state at time $k$ is evolved from the state at $(k - 1)$ according to
+\begin{equation}
+\textbf{x}_{k} = \textbf{F}_{k} \textbf{x}_{k-1} + \textbf{B}_{k} \textbf{u}_{k} + \textbf{w}_{k}
+\label{eq:state-space}
+\end{equation}
+where
+\begin{itemize}
+\item $F_k$ is the state transition model which is applied to the previous state $x_k-1$,
+\item $B_k$ is the control-input model which is applied to the control vector $u_k$,
+\item $w_k$ is the process noise which is assumed to be drawn from a zero mean multivariate normal distribution with covariance $\mathbf{Q}_k$. $\textbf{w}_{k} \sim N(0, \textbf{Q}_k)$.
+\end{itemize}
+
+At time $k$ an observation (or measurement) $z_k$ of the true state $x_k$ is made according to
+\[
+\textbf{z}_{k} = \textbf{H}_{k} \textbf{x}_{k} + \textbf{v}_{k}
+\]
+where $H_k$ is the observation model which maps the true state space into the observed space and $v_k$ is the observation noise which is assumed to be zero mean Gaussian white noise with covariance $R_k$. $\textbf{v}_{k} \sim N(0, \textbf{R}_k)$. The initial state, and the noise vectors at each step $\{x_0, w_1, \ldots, w_k, v_1 \ldots v_k\}$ are all assumed to be mutually independent.
+
+Many real dynamical systems do not exactly fit \eqref{eq:state-space}; however, because the Kalman filter is designed to operate in the presence of noise, an approximate fit is often good enough for the filter to be very useful. Variations on the Kalman filter described below allow richer and more sophisticated models.
+
+\paragraph{Recursive Nature of Kalman Filter.}
+The Kalman filter is a recursive estimator. This means that only the estimated state from the previous time step and the current measurement are needed to compute the estimate for the current state. In contrast to batch estimation techniques, no history of observations and/or estimates is required. It is unusual in being purely a time domain filter; most filters (for example, a low-pass filter) are formulated in the frequency domain and then transformed back to the time domain for implementation. In what follows, the notation $\hat{\textbf{x}}_{n|m}$ represents the estimate of $\textbf{x}$ at time $n$ given observations up to, and including time $m$.
+
+The state of the filter is represented by two variables,
+\begin{itemize}
+\item $\hat{\textbf{x}}_{k|k}$, the estimate of the state at time $k$ given observations up to and including time $k$,
+\item $\textbf{P}_{k|k}$, the error covariance matrix (a measure of the estimated accuracy of the state estimate).
+\end{itemize}
+
+The Kalman filter has two distinct phases: \emph{Predict} and \emph{Update}. The predict phase uses the state estimate from the previous time step to produce an estimate of the state at the current time step. In the update phase, measurement information at the current time step is used to refine this prediction to arrive at a new, and more accurate state estimate, again for the current time step.
+
+\paragraph{Predict}
+\begin{eqnarray*}
+\text{Predicted state} \qquad \hat{\textbf{x}}_{k|k-1} &=& \textbf{F}_{k}\hat{\textbf{x}}_{k-1|k-1} + \textbf{B}_{k-1} \textbf{u}_{k-1} \\
+\text{Predicted estimate covariance} \qquad \textbf{P}_{k|k-1} &=& \textbf{F}_{k} \textbf{P}_{k-1|k-1} \textbf{F}_{k}^{\text{T}} + \textbf{Q}_{k-1}
+\end{eqnarray*}
+
+\paragraph{Update}
+\begin{eqnarray*}
+\text{Innovation or measurement residual} \qquad \tilde{\textbf{y}}_k &=& \textbf{z}_k - \textbf{H}_k\hat{\textbf{x}}_{k|k-1} \\
+\text{Innovation (or residual) covariance} \qquad \textbf{S}_k &=& \textbf{H}_k \textbf{P}_{k|k-1} \textbf{H}_k^\text{T} + \textbf{R}_k \\
+\text{Optimal Kalman gain} \qquad \textbf{K}_k &=& \textbf{P}_{k|k-1}\textbf{H}_k^\text{T}\textbf{S}_k^{-1} \\
+\text{Updated state estimate} \qquad \hat{\textbf{x}}_{k|k} &=& \hat{\textbf{x}}^{-}_{k|k-1} + \textbf{K}_k\tilde{\textbf{y}}_k \\
+\text{Updated estimate covariance} \qquad \textbf{P}_{k|k} &=& (I - \textbf{K}_k \textbf{H}_k) \textbf{P}_{k|k-1} \\
+\end{eqnarray*}
+
+The formula for the updated estimate covariance above is only valid for the optimal Kalman gain. Usage of other gain values require a more complex formula found in the derivations section.
+
+\paragraph{Invariants.}
+If the model is accurate, and the values for $\hat{\textbf{x}}_{0|0}$ and $\textbf{P}_{0|0}$ accurately reflect the distribution of the initial state values, then the following invariants are preserved: all estimates have mean error zero
+\begin{eqnarray*}
+\textrm{E}[\textbf{x}_k - \hat{\textbf{x}}_{k|k}] = \textrm{E}[\textbf{x}_k - \hat{\textbf{x}}_{k|k-1}] &=& 0 \\
+\textrm{E}[\tilde{\textbf{y}}_k] &=& 0
+\end{eqnarray*}
+where $E[\xi]$ is the expected value of $\xi$, and covariance matrices accurately reflect the covariance of estimates.
+\begin{eqnarray*}
+\textbf{P}_{k|k} &=& \textrm{cov}(\textbf{x}_k - \hat{\textbf{x}}_{k|k}) \\
+\textbf{P}_{k|k-1} &=& \textrm{cov}(\textbf{x}_k - \hat{\textbf{x}}_{k|k-1}) \\
+\textbf{S}_{k} &=& \textrm{cov}(\tilde{\textbf{y}}_k).
+\end{eqnarray*}
+
+
+\subsubsection{Information Filter}
+In the information filter, or inverse covariance filter, the estimated covariance and estimated state are replaced by the information matrix and information vector respectively. These are defined as,
+\begin{eqnarray*}
+\textbf{Y}_{k|k} &=& \textbf{P}_{k|k}^{-1} \\
+\hat{\textbf{y}}_{k|k} &=& \textbf{P}_{k|k}^{-1}\hat{\textbf{x}}_{k|k}.
+\end{eqnarray*}
+
+Similarly the predicted covariance and state have equivalent information forms, defined as,
+\begin{eqnarray*}
+\textbf{Y}_{k|k-1} &=& \textbf{P}_{k|k-1}^{-1} \\
+\hat{\textbf{y}}_{k|k-1} &=& \textbf{P}_{k|k-1}^{-1}\hat{\textbf{x}}_{k|k-1},
+\end{eqnarray*}
+as have the measurement covariance and measurement vector, which are defined as,
+\begin{eqnarray*}
+    \textbf{I}_{k} &=& \textbf{H}_{k}^{\text{T}} \textbf{R}_{k}^{-1} \textbf{H}_{k} \\
+    \textbf{i}_{k} &=& \textbf{H}_{k}^{\text{T}} \textbf{R}_{k}^{-1} \textbf{z}_{k}.
+\end{eqnarray*}
+
+The information update now becomes the sum,
+\begin{eqnarray*}
+    \textbf{Y}_{k|k} &=& \textbf{Y}_{k|k-1} + \textbf{I}_{k}\\
+    \hat{\textbf{y}}_{k|k} &=& \hat{\textbf{y}}_{k|k-1} + \textbf{i}_{k}.
+\end{eqnarray*}
+
+The main advantage of the information filter is that $N$ measurements can be filtered at each time step simply by summing their information matrices and vectors,
+\begin{eqnarray*}
+    \textbf{Y}_{k|k} &=& \textbf{Y}_{k|k-1} + \sum_{j=1}^N \textbf{I}_{k,j} \\
+    \hat{\textbf{y}}_{k|k} &=& \hat{\textbf{y}}_{k|k-1} + \sum_{j=1}^N \textbf{i}_{k,j}.
+\end{eqnarray*}
+To predict the information filter the information matrix and vector can be converted back to their state space equivalents, or alternatively the information space prediction can be used.
+\begin{eqnarray*}
+    \textbf{M}_{k} &=& [\textbf{F}_{k}^{-1}]^{\text{T}} \textbf{Y}_{k-1|k-1} \textbf{F}_{k}^{-1} \\
+    \textbf{C}_{k} &=& \textbf{M}_{k} [\textbf{M}_{k}+\textbf{Q}_{k}^{-1}]^{-1} \\
+    \textbf{L}_{k} &=& I - \textbf{C}_{k} \\
+    \textbf{Y}_{k|k-1} &=& \textbf{L}_{k} \textbf{M}_{k} \textbf{L}_{k}^{\text{T}} + \textbf{C}_{k} \textbf{Q}_{k}^{-1} \textbf{C}_{k}^{\text{T}} \\
+    \hat{\textbf{y}}_{k|k-1} &=& \textbf{L}_{k} [\textbf{F}_{k}^{-1}]^{\text{T}}\hat{\textbf{y}}_{k-1|k-1}.
+\end{eqnarray*}
+Note that if $F$ and $Q$ are time invariant these values can be cached. Note also that $F$ and $Q$ need to be invertible.
+
+\subsubsection{Fixed-Lag Smoother}
+The optimal fixed-lag smoother provides the optimal estimate of $\hat{\textbf{x}}_{k - N | k}$ for a given fixed-lag $N$ using the measurements from $\textbf{z}_{1}$ to $\textbf{z}_{k}$. It can be derived using the previous theory via an augmented state, and the main equation of the filter is the following,
+\[
+\begin{bmatrix}
+\hat{\textbf{x}}_{t|t} \\ \hat{\textbf{x}}_{t-1|t} \\ \vdots \\ \hat{\textbf{x}}_{t-N+1|t} \\ \end{bmatrix} = \begin{bmatrix} I \\ 0 \\ \vdots \\ 0 \\ \end{bmatrix} \hat{\textbf{x}}_{t|t-1} + \begin{bmatrix} 0 & \ldots & 0 \\ I & 0 & \vdots \\ \vdots & \ddots & \vdots \\ 0 & \ldots & I \\ \end{bmatrix} \begin{bmatrix} \hat{\textbf{x}}_{t-1|t-1} \\ \hat{\textbf{x}}_{t-2|t-1} \\ \vdots \\ \hat{\textbf{x}}_{t-N|t-1} \\ \end{bmatrix} + \begin{bmatrix} K^{(1)} \\ K^{(2)} \\ \vdots \\ K^{(N)} \\
+\end{bmatrix}
+y_{t|t-1}
+\]
+where,
+\begin{itemize}
+\item $\hat{\textbf{x}}_{t|t-1}$ is estimated via a standard Kalman filter,
+\item $y_{t|t-1} = z(t) - \hat{\textbf{x}}_{t|t-1}$ is the innovation produced considering the estimate of the standard Kalman filter,
+\item the various $\hat{\textbf{x}}_{t-i|t}$ with $i = 0,\ldots,N$ are new variables, that is, they do not appear in the standard Kalman filter,
+\item the gains are computed via the following scheme,
+\begin{subequations}
+\begin{eqnarray}
+\mathbf{K}^{(i)} &=& \mathbf{P}^{(i)} \mathbf{H}^{T} \left[ \mathbf{H P H}^{T} + \mathbf{R} \right]^{-1} \label{eq:lag-smooth-scheme-K} \\
+\mathbf{P}^{(i)} &=& \mathbf{P} \left[ \left[ \mathbf{F} - \mathbf{K H} \right]^{T} \right]^{i} \label{eq:lag-smooth-scheme-P}
+\end{eqnarray}
+\end{subequations}
+where $\mathbf{P}$ is the prediction error covariance matrix, and with $\mathbf{K}$ are the gains of the standard Kalman filter.
+\end{itemize}
+
+Both \eqref{eq:lag-smooth-scheme-K} and \eqref{eq:lag-smooth-scheme-P}, will lead us to the next step, defining the estimation error covariance
+\[
+P_{i} = E \left[ \left( \textbf{x}_{t-i} - \hat{\textbf{x}}_{t-i|t} \right)^{*} \left( \textbf{x}_{t-i} - \hat{\textbf{x}}_{t-i|t} \right) | z_{1} \ldots z_{t} \right]
+\]
+then we have that the improvement on the estimation of $\textbf{x}_{t-i}$ is given by,
+\[
+P - P_{i} = \sum_{j = 0}^{i} \left[ P^{(j)} H^{T} \left[ H P H^{T} + R \right]^{-1} H \left( P^{(i)} \right)^{T} \right].
+\]

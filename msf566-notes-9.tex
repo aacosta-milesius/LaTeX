@@ -1,0 +1,188 @@
+\section{Extreme Values \& Value at Risk}
+\paragraph{Primary Text Reading.} \citeA[chap. 7]{tsay2005aft}\index{Tsay, Ruey}
+
+\subsection{Value-at-Risk}\index{value-at-risk}
+Value at Risk (VaR) is defined with respect to a specific portfolio of financial assets, at a specified probability and a specified time horizon. The probability that the mark-to-market loss on the portfolio over the time horizon is greater than VaR, assuming normal markets and no trading, is the specified probability level.
+
+VaR tries to quantify two major items,
+\begin{itemize}
+\item a measure of minimum loss of a given asset
+\item amount a position could decline in a given period, associated with a given probability (or confidence level)
+\end{itemize}
+
+For example, if a portfolio of stocks has a one-day 5\% VaR of \$1 million, there is a 5\% probability that the portfolio will decline in value by \emph{more than} \$1 million over the next day, assuming markets are normal and there is no trading. Such an event is termed a ``VaR break.''
+
+\margincomment{Important ideas related to VaR are: economic capital, back-testing, stress testing and expected shortfall.}
+VaR has five main uses in finance: risk management, risk measurement, financial control, financial reporting and computing regulatory capital. It is a simple measure, relatively speaking, but it has various methodologies, many of which are controversial. We start with some more formal definitions,
+\begin{enumerate}
+\item time period given: $\Delta t = \ell$
+\item change in value: $\Delta V(\ell)$
+\item cdf of the change: $F_{\ell}(x)$
+\item given probability at tail: $p$
+\item Long position
+\[
+p=Pr[\Delta V(\ell) \le \text{VaR}]=F_{\ell}(\text{VaR})
+\]
+\item Short position \\
+\begin{eqnarray*}
+p &=& Pr[\Delta V(\ell) \ge \text{VaR}] \\
+&=& 1 - Pr[\Delta V(\ell) \le \text{VaR}] \\
+&=& 1 - F_{\ell}(\text{VaR})
+\end{eqnarray*}
+\end{enumerate}
+We can study VaR by simply focusing on the loss function and quantile $x_p$, the $p$th quantile of $F_{\ell}(x)$ if
+$p=F_{\ell}(x_p)$ and $F_{\ell}(\cdot)$ is continuous.
+
+There are several factors that affect VaR,
+\begin{enumerate}
+\item the probability $p$,
+\item the time horizon $\ell$. One-week VaR will allow more swings, and thus, more losses, than a one-day VaR,
+\item the cdf $F_{\ell}(x)$, the cdf of \emph{loss}. We can create a distribution of asset returns from historical data, but how well does the past work as an estimator for the future?
+\item the \emph{mark-to-market} value of the position, which may be difficult to determine in some markets,
+\item volatility $\sigma^2_t$ and how it is measured. \emph{RiskMetrics}, developed by J.P. Morgan, uses a special IGARCH model,
+\[
+\sigma^2_t = \alpha \sigma^2_{t-1}+(1-\alpha)r^2_{t-1}, \quad 1 > \alpha > 0.
+\]
+\end{enumerate}
+
+One way of finding the predicted weekly losses at the 5th percentile is to generate a density from historic returns data, then find the 5\% level within the density estimate. The density is depicted in Figure~\ref{figure:SPW-VaR}.
+\index{R language}\index{density@\texttt{density} (in R)} 
+\begin{verbatim}
+spxw<-read.csv("SPX-W.csv", header=T)
+Log.Returns<-log(spxw$Close[2:NROW(spxw)]/
+                 spxw$Close[1:(NROW(spxw)-1)])
+ret.dens<-density(Log.Returns)
+plot(ret.dens, "Density of S&P Log Returns")
+ret.dens$x
+ret.dens$x[NROW(ret.dens$x)*.05]
+\end{verbatim}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.4]{SPW-VaR}
+  \caption[S\&P 500 Density of Log Returns]{S\&P 500 Density of Log Returns to demonstrate 5\% one-week Value-at Risk }
+  \label{figure:SPW-VaR}
+\end{figure}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.72]{Est-VaR}
+  \caption[Comparing Density of Log Returns]{Comparing a 5\% VaR for two assets using (a) density estimates and (b) normal distribution assumptions. Also, notice the normal distribution superimposed in panel (b) so that we get a better idea of the skewness and kurtosis of log returns for these two asset returns.}
+  \label{figure:est-VaR}
+\end{figure}
+
+Some VaR methods will calculate the standard deviation and the mean of the log returns to generate a normal distribution. From that distribution, the analyst measures the value-at-risk at the fifth percentile to determine the 5\% VaR. In Figure~\ref{figure:est-VaR}, we compare a 5\% VaR for two assets using density estimates and normal distribution assumptions.
+
+In Figure~\ref{figure:est-VaR}(a), we create a density estimate of the log returns, and in Figure~\ref{figure:est-VaR}(b), we obtain the mean and the standard deviation of the log returns and assume a normal distribution. The R code to perform these operations is listed.
+
+\ecaption{Two methods of Calculating Historical VaR in R}\index{R language}
+\begin{verbatim}
+# 5% daily VaR quantile scores based on density estimate
+aapl.VaR<-aapl.ret.dens$x[NROW(aapl.ret.dens$x)*.05]
+gm.VaR<-gm.ret.dens$x[NROW(gm.ret.dens$x)*.05]
+
+# NVaR: VaR drawn from a normal distribution sample.
+aapl.NVaR<-qnorm(.05, mean(aapl.ret.dens$x), sd(aapl.ret.dens$x))
+gm.NVaR<-qnorm(.05, mean(gm.ret.dens$x), sd(gm.ret.dens$x))
+\end{verbatim}
+
+\paragraph{VaR Controversies.} The use of VaR as risk management tool has been controversial since it moved from trading desks and into the public in 1994. A heated debate in 1997 between Nassim Taleb\index{Taleb, Nassim} and Philippe Jorion\index{Jorion, Philippe} set out some of the major points of contention. Taleb claimed that VaR,
+\begin{enumerate}
+\item ignored 2,500 years of experience in favor of untested models built by non-traders,
+\item was ``charlatanism'' because it claimed to estimate the risks of rare events, which is impossible,
+\item gave false confidence,
+\item would be exploited by traders.
+\end{enumerate}
+
+More recently, David Einhorn\index{Einhorn, David} and Aaron Brown\index{Brown, Aaron} debated VaR in the publication, \emph{Global Association of Risk Professionals Review}. Einhorn compared VaR to ``an airbag that works all the time, except when you have a car accident.'' He further charged that VaR,
+\begin{enumerate}
+\item led to excessive risk-taking and leverage at financial institutions,
+\item focused on the manageable risks near the center of the distribution and ignored the tails,
+\item created an incentive to take ``excessive but remote risks'',
+\item Was ``potentially catastrophic when its use creates a false sense of security among senior executives and watchdogs.''
+\end{enumerate}
+
+A common complaint among academics is that VaR is not \emph{subadditive}, which means that the VaR of a combined portfolio can be larger than the sum of the VaRs of its components. To a practicing risk manager this makes sense. For example, let us suppose the average portfolio suffers market correction, and faces a loss once every ten years. A single portfolio has approximately 0.004\% chance of facing a market correction loss on a specific day, so the risk of such a catastrophic loss would not figure into one-day 1\% VaR. It would not even be within an order of magnitude of that, so it is in the range where the institution should not worry about it.
+
+\subsection{Extreme Value Theory}
+In VaR, we are mostly focused on what happens at a predictable quantile, usually the 5th percentile within a specific time frame. In \emph{extreme value theory}, we focus upon the tail behavior of $r_t$. A properly normalized $r_{(1)}$ assumes a special distribution,
+\[
+F_*(x)=
+\begin{cases}
+1-\exp[-(1+kx)^{1/k}] & \text{if } k \ne 0 \\
+1-\exp[-\exp(x)] & \text{if } k=0.
+\end{cases}
+\]
+for $x<-1/k$ if $k<0$ and $x>-1/k$ if $k>0$,
+where, \\
+$k$ is the shape parameter, \\
+$\alpha =-1/k$, the tail index of the distribution.
+
+\clearpage
+We have three different types of distributions to work with,
+\begin{enumerate}
+\item $k = 0$, the Gumbel family. The cdf is
+\[
+F_*(x)=1-\exp[-exp(x)], \quad -\infty < x < \infty.
+\]
+\item $k < 0$, the Fr\'{e}chet family. The cdf is
+\[
+F_*(x)=
+\begin{cases}
+1-\exp[-(1+kx)^{1/k}] & \text{if } x< -1/k, \\
+1 & \text{otherwise.}
+\end{cases}
+\]
+\item $k>0$, the Weibull family. The cdf is
+\[
+F_*(x)=
+\begin{cases}
+1-\exp[-(1+kx)^{1/k}] & \text{if } x>-1/k, \\
+0 & \text{otherwise}.
+\end{cases}
+\]
+\end{enumerate}
+
+Here, we will demonstrate some functions of the \texttt{evir} library, ``Extreme Values in R'' \cite{evir-R}.
+\ecaption{Extreme Values in R using Weibull, Fr\'{e}chet, \& Gumbel distributions}\index{R language}\index{evir@\texttt{evir} (library in R)}
+\rpkg{evir}
+\begin{verbatim}
+library("evir")
+# Generate CDF of Weibull, Frechet, & Gumbel dists
+z=seq(-5,5,length=200)
+# pgev to obtain the cdf of generalized extreme value dist.
+
+# Frechet dist for z > -2 only, because xi=0.5.
+cdf.f=ifelse((z > -2),pgev(z,xi=0.5),0)
+
+# Weibull dist for z < 2 only.
+cdf.w=ifelse((z < 2), pgev(z,xi=-0.5),1)
+
+# Gumbel dist.
+cdf.g=exp(-exp(-z))
+
+plot(z,cdf.w,type=`l',xlab=`z',ylab=`H(z)')
+lines(z,cdf.f,type=`l',lty=2)
+lines(z,cdf.g,lty=3)
+legend(-5,1,legend=c("Weibull H(-0.5,0,1)", "Frechet H(0.5,0.1)",
+    "Gumbel H(0,0,1)"),lty=1:3)
+\end{verbatim}
+When you run this code, make sure you have a large enough graphics window so that the legend does not overlap the plots. There is an S version of \texttt{evir} called \texttt{evis}, which stands for ``Extreme Values in S''.
+
+\subsection{Expected Shortfall}
+Expected shortfall is a term used in financial risk management to evaluate the market risk of a portfolio. It is an alternative to Value-at-Risk. The ``expected shortfall at $q$\% level'' is the expected return on the portfolio in the worst $q$\% of the sampled cases. Expected shortfall is also called Conditional Value at Risk\index{conditional value-at-risk} (CVaR) and Expected Tail Loss\index{expected tail loss} (ETL).
+
+ES evaluates the value \emph{or risk} of an investment in a more conservative way than VaR, focusing on the less profitable outcomes. For high values of $q$ it ignores the most profitable but unlikely possibilities, for small values of $q$ it focuses on the worst losses. On the other hand, unlike the discounted maximum loss even for lower values of $q$ expected shortfall does not consider only the single most catastrophic outcome. A value of $q$ often used in practice is 5\%.
+
+Expected shortfall is a coherent, and moreover, a spectral measure of financial portfolio risk. It requires a quantile-level $q$, and is defined to be the expected loss of portfolio value given that a loss is occurring at or below the $q$-quantile. A major contributor to the theories of ES is Carlo Acerbi\index{Acerbi, Carlo}.
+
+The expected loss given that the VaR is exceeded is \emph{Expected Shortfall} (ES). Specifically,
+\[
+\text{ES}_q = E(r|r>\text{VaR}_q) = \text{VaR}q + E(r-\text{VaR}_q|r>\text{VaR}_q).
+\]
+For GPD, it turns out that
+\[
+\text{ES}_q = \frac{\text{VaR}_q}{1+k} + \frac{\psi(\eta)+k\eta}{1+k}
+\]
+
+When we use the R library, \texttt{evir}, the command to generate VaR and ES is \texttt{riskmeasures}.

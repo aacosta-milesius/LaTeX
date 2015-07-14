@@ -1,0 +1,274 @@
+\section{Factor Models and PCA}
+\paragraph{Primary Text Reading.} \citeA[chap. 9]{tsay2005aft}\index{Tsay, Ruey},
+and \citeA{lanne2007mgof}
+
+\subsection{Factor Models}
+When we consider multiple time series, the amount of data increases, as does the number of correlations among them. It is for this reason, we consider \emph{factor models}. A portfolio consists of multiple assets of various sizes. The market effect of any single asset with respect to the portfolio is important for valuation and risk assessment.
+
+Here, we will look at ways to reduce the dimensions in a multivariate \fts{}. A basic factor model starts with the general form,
+\begin{equation}
+r_{it} = \alpha_i + \beta_{i1} f_{1t}+ \cdots + \beta_{im}f_{mt}+\epsilon_{it}, \quad t=1,\ldots,T; \: i=1,\ldots,k,
+\label{eq:factor-model}
+\end{equation}
+where $\alpha_i$ is a constant representing the intercept, $\{f_{it}|j=1,\ldots,m \}$ are $m$ common factors, $\beta_{ij}$ is the \emph{factor loading} for asset $i$ on the $j$th factor, and $\epsilon_{it}$ is the \emph{specific factor} of asset $i$.
+
+With the large number of factors, it is important to assess the goodness-of-fit using a familiar statistic, $r^2$, to obtain correlation coefficient of the $i$th asset,
+\begin{equation}
+r^2 = 1- \frac{[\hat{\mathbf{E}}'\hat{\mathbf{E}}]_{i,i}}{[\mathbf{R}'\mathbf{R}]_{i,i}} \quad i=1,\ldots,k,
+\end{equation}
+where $\mathbf{A}_{i,i}$ denotes the $(i,i)$th element of the matrix $\mathbf{A}$.
+
+\subsection{Fundamental Factor Models}
+We can rewrite \eqref{eq:factor-model} into matrix form,
+\begin{equation}
+r_{it}=\alpha_i + \mathbf{\beta}'_i f_t +\epsilon_{it}
+\label{eq:fund-factor-model}
+\end{equation}
+where $\mathbf{\beta}_i=(\beta_{i1},\ldots,\beta_{im})'$.
+
+Fundamental factors use observable asset specific fundamentals such as industrial classification, market capitalization, book value, and style classification (\emph{growth or value}) to construct common factors that explain the excess returns. There are two major approaches to fundamental factor modeling,
+\begin{enumerate}
+\item Bar Rosenberg (``BARRA''):\index{BARRA factor model} Observable asset specific fundamentals, such as factor betas $\mathbf{\beta}_i$, and estimates the factors $\mathbf{f}_t$ at each time index $t$ by regression methods. The betas are time-invariant, but the realizations $\mathbf{f}_t$ evolve over time.
+\item Fama--French:\index{Fama-French factor model} The factor realization $f_{it}$ for a given specific fundamental is obtained by constructing some hedge portfolio based on the observed fundamental.
+\end{enumerate}
+
+\subsubsection{BARRA Factor Model}
+We can reduce \eqref{eq:fund-factor-model} into,
+\begin{equation}
+\tilde{\mathbf{r}}_t = \mathbf{\beta f}_t + \mathbf{\epsilon}_t,
+\end{equation}
+where $\tilde{\mathbf{r}}_t$ denotes the (sample) mean-corrected excess returns and $\mathbf{\beta f}_t$ as factor realizations. Using a \emph{weighted least squares} method, we have an estimate of,
+\begin{equation}
+\hat{\mathbf{f}}_t = (\mathbf{\beta D}^{-1}\beta')^{-1} (\mathbf{\beta D}^{-1}\beta'\tilde{\mathbf{r}}_t).
+\end{equation}
+The portfolio solution then becomes,
+\[
+\mathbf{\omega}' = (\mathbf{\beta'D}^{-1}\mathbf{\beta})^{-1}(\mathbf{\beta'D}^{-1}).
+\]
+
+Once we obtain the estimates of the factors, we may construct a \emph{factor mimicking portfolio}\index{factor mimicking portfolio}. In this case, the portfolio $\mathbf{\omega}$ is normalized such that $\sum^k_{i=1}\omega_i=1$.
+
+\subsubsection{Fama--French Factor Model}
+Fama and French offer a two-step procedure for factor realization. First, sort the assets based on the values of of the observed fundamental. Next, form a hedge portfolio which is long in the top quintile of the sorted assets. The observed return on this hedge portfolio at time $t$ is the observed factor realization for the given asset fundamental. This procedure is repeated for each asset fundamental.
+
+The observed factor realizations $\{\mathbf{f}_t|t=1,\ldots,T\}$ are used to estimate the betas for each asset using a time series regression method. In general, Fama and French use three fundamentals,
+\begin{enumerate}
+\item the overall (``excess'') market return,
+\item the performance of small stocks relative to large stocks,
+\item the performance of value stocks relative to growth stocks.
+\end{enumerate}
+
+\subsection{Principal Component Analysis}
+The covariance structure of vector return series is very important in portfolio selection. Through such a mechanism, we can determine our level of market diversification, and thus, the portfolio's response to market moves. Given a $k$-dimensional random variable $\mathbf{r}=(r_1,\ldots,r_k)'$ with covariance matrix $\mathbf{\sigma}_r$, a \emph{principal components analysis} (PCA) is concerned with using as few as possible linear combinations of $r_i$ to explain the structure of $\sigma_r$. If $r$ denotes the monthly log return of $k$ assets, then PCA can be used to study the source of variations of these $k$ asset returns.
+
+PCA applies to either the covariance matrix $\mathbf{\sigma_r}$ or the correlation matrix $\mathbf{\rho}_r$ of $\mathbf{r}$. If $\mathbf{w}_i=(w_{i1},\ldots,w_{ik})'$ is a $k$-dimensional vector, where $i=1,\ldots,k$, then,
+\[
+y_i=\mathbf{w}'_i r = \sum^k_{j=1}w_{ij}r_j
+\]
+is a linear combination of random vector $\mathbf{r}$. Likewise, we have,
+\begin{subequations}
+\begin{eqnarray}
+\text{Var}(y_i)&=&\mathbf{w}'_i \mathbf{\sigma}_r \mathbf{w}_i, \quad i=1,\ldots,k, \\
+\text{Cov}(y_i,y_j)&=&\mathbf{w}'_i \mathbf{\sigma}_r \mathbf{w}_i, \quad i,j=1,\ldots,k.
+\end{eqnarray}
+\end{subequations}
+The idea of PCA is to find linear combinations $\mathbf{w}_i$ such that $y_i$ and $y_j$ are uncorrelated for $i \ne j$ and the variates of $y_i$ are as large as possible.
+
+The principal components are derived through the following method,
+\begin{enumerate}
+\item The first principal component of $\mathbf{r}$ is the linear combination $y_1=\mathbf{w}'_1 \mathbf{r}$ that maximizes Var($y_1$) subject to the constraint $\mathbf{w}'_1\mathbf{w}_1=1$.
+\item The second principal component of $\mathbf{r}$ is the linear combination $y_2=\mathbf{w}'_2 \mathbf{r}$ that maximizes Var($y_2$) subject to the constraint $\mathbf{w}'_2\mathbf{w}_2=1$ and Cov($y_2,y_1)=0$.
+\item The $i$th principal component of $\mathbf{r}$ is the linear combination $y_i=\mathbf{w}'_i\mathbf{r}$ that maximizes Var($y_i$) subject to the constraints $\mathbf{w}'\mathbf{w}_i=1$ and Cov($y_i,y_j)=0$ for $j=1,\ldots,i-1$.
+\end{enumerate}
+
+\subsubsection{Multivariate Autoregression}\index{multivariate autoregression}
+When we have a time series with multiple variates, we may still use autoregressive methods, but we need a slightly more complex model. In order to choose our best fit of model parameters, we will use a measure discussed in Section~\ref{Bayesian information criterion (BIC)}.
+
+Here is a method of performing multivariate autoregression using the R environment \cite{mAr-R}. We will be estimating the coefficient matrix of estimators for electricity pricing based on independent variable vectors of natural gas price, temperature, heating degree day units, and precipitation. The residuals are plotted for comparison in Figure~\ref{figure:mAr-residuals}, and the Q-Q plots are depicted in Figure~\ref{figure:mAr-qq-plots}.
+\ecaption{Multivariate Autoregression in R}
+\rpkg{mAr}\label{mAr}
+\begin{verbatim}
+# Multivariate AR. Remember R is case sensitive!
+install.packages("mAr")
+library("mAr")
+
+# mAr.est Estimation of multivariate AR(p) model
+# Elec.MWh, NG, Temp, HDD, Precip is pwr[,2:6]
+pwr<-read.table("Power and NG.txt", header=T)
+ep<-mAr.est(pwr[,2:6],5)
+
+# Check our model selection
+# just like we did with AIC, lower numbers are better.
+# Get the Schwarz Bayesian Criterion,
+# aka Bayesian information criterion (BIC) 
+ep$SBC
+
+# mAr.eig Eigendecomposition of m-variate AR(p) model
+ep<-mAr.est(pwr[,2:6],5)
+mAr.eig(ep$AHat, ep$CHat)
+
+# mAr.pca Multivariate autoregressive analysis in PCA space
+A<-mAr.est(pwr[,2:6],5)$AHat
+mAr.eig(A)$modes
+mAr.pca(pwr[,2:6],1,k=4)$modes
+\end{verbatim}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.75]{mAr-residuals}
+  \caption[Plotting Vector Autoregressive Residuals]{When we test whether the residuals are randomly distributed, we can plot each of the variates and look at the residuals. They appear random, and they tend to cluster.}
+  \label{figure:mAr-residuals}
+\end{figure}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.75]{mAr-qq-plots}
+  \caption[Q-Q Plots of VAR Residuals]{Quantile-Quantile plots of the regression variables. Notice they do not conform to the red diagonal line, which compares the quantiles to a normal distribution.}
+  \label{figure:mAr-qq-plots}
+\end{figure}
+\clearpage
+
+\subsubsection{Eigenvectors}\index{eigenvectors}\label{eigenvectors}\index{linear algebra}
+%Some background info at \texttt{http://mathworld.wolfram.com/Eigenvector.html} \\
+%also, \texttt{http://www.physlink.com/education/AskExperts/ae520.cfm}
+
+%Decomposition is discussed in detail at
+%\begin{verbatim}
+%http://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix
+%\end{verbatim}
+Eigenvectors are a special set of vectors associated with a linear system of equations (\textit{i.e.}, a matrix equation) that are sometimes also known as \emph{characteristic vectors}, proper vectors, or latent vectors.
+
+The determination of the eigenvectors and eigenvalues of a system is very important in physics and engineering, where it is equivalent to matrix diagonalization and arises in such common applications as stability analysis, the physics of rotating bodies, and small oscillations of vibrating systems, to name only a few. Each eigenvector is paired with a corresponding so-called eigenvalue. Mathematically, two different kinds of eigenvectors need to be distinguished: left eigenvectors and right eigenvectors. However, for many problems in physics and engineering, it is sufficient to consider only right eigenvectors.
+\margincomment[red]{The term ``eigenvector" used without qualification is assumed to refer to a \emph{right eigenvector}}
+
+The decomposition of a square matrix $\mathbf{A}$ into eigenvalues and eigenvectors is known in this work as eigen decomposition, and the fact that this decomposition is always possible as long as the matrix consisting of the eigenvectors of $\mathbf{A}$ is square is known as the \emph{eigen decomposition theorem}. 
+
+Define a right eigenvector as a column vector $\mathbf{X}_R$ satisfying $\mathbf{AX}_R=\lambda_R \mathbf{X}_R,$ where $\mathbf{A}$ is a matrix, so that
+$(\mathbf{A}-\lambda_R \mathbf{I})\mathbf{X}_R=0,$ which means the right eigenvalues must have zero determinant\index{matrix determinant}, that is, 
+$\det(\mathbf{A}-\lambda_R \mathbf{I})=0$. Similarly, define a left eigenvector as a row vector $\mathbf{X}_L$ satisfying $\mathbf{X}_L \mathbf{A}=\lambda_L \mathbf{X}_L.$
+
+Taking the transpose of each side gives $(\mathbf{X}_L \mathbf{A})^T=\lambda_L \mathbf{X}_L^T,$ which can be rewritten as $\mathbf{A}^T \mathbf{X}_L^T=\lambda_L \mathbf{X}_L^T.$ Rearrange again to obtain $(\mathbf{A}^T-\lambda_L \mathbf{I}){\mathbf{X}_L}^T=0,$ which means
+$\det(\mathbf{A}^T-\lambda_L \mathbf{I})=0.$ Rewriting gives us,
+\begin{eqnarray*}
+0&=& \det(\mathbf{A}^T-\lambda_L \mathbf{I}) = \det(\mathbf{A}^T-\lambda_L \mathbf{I}^T) \\
+ &=& \det(\mathbf{A}-\lambda_L \mathbf{I})^T \\
+ &=& \det(A-\lambda_L \mathbf{I}),
+\end{eqnarray*}
+where the last step follows from the identity $\det(A)=\det(A^T)$. Let $X_R$ be a matrix  formed by the columns of the right eigenvectors and $X_L$ be a matrix formed by the rows of the left eigenvectors. Let 
+\[
+D=
+\begin{bmatrix}
+	\lambda_1 & \cdots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \cdots & \lambda_n
+\end{bmatrix}
+. 
+\]
+Then,
+\begin{eqnarray*}
+\mathbf{AX}_R&=&\mathbf{X}_R \mathbf{D}\\
+\mathbf{X}_L \mathbf{A}&=&\mathbf{D} \mathbf{X}_L \\
+\mathbf{X}_L \mathbf{AX}_R &=& \mathbf{X}_L \mathbf{X}_R \mathbf{D} \\
+\mathbf{X}_L \mathbf{AX}_R &=& \mathbf{DX}_L \mathbf{X}_R,
+\end{eqnarray*}
+so that,
+\[
+\mathbf{X}_L \mathbf{X}_R \mathbf{D}=\mathbf{D} \mathbf{X}_L \mathbf{X}_R.
+\]
+But this equation is of the form $\mathbf{CD}= \mathbf{DC}$ where $\mathbf{D}$ is a diagonal matrix, so it must be true that $\mathbf{C=X}_L \mathbf{X}_R$ is also diagonal. In particular, if $\mathbf{A}$ is a symmetric matrix, then the left and right eigenvectors are simply each other's transpose, and if $\mathbf{A}$ is a self-adjoint matrix (that is, it is \emph{Hermitian})\index{Hermitian matrix}, then the left and right eigenvectors are adjoint matrices.
+
+Eigenvectors may not be equal to the zero vector. A nonzero scalar multiple of an eigenvector is equivalent to the original eigenvector. Hence, without loss of generality, eigenvectors are often normalized to unit length.
+
+While an $n \times n$ matrix always has $n$ eigenvalues, some or all of which may be degenerate, such a matrix may have between 0 and $n$ linearly independent eigenvectors. For example, the matrix
+\[
+\begin{bmatrix}
+1 & 1 \\
+0 & 1
+\end{bmatrix}
+\]
+has only the single eigenvector $(1,0)$. 
+
+In factor analysis, the eigenvectors of a covariance matrix or correlation matrix correspond to factors, and eigenvalues to the variance explained by these factors. Factor analysis is a statistical technique used in the social sciences and in marketing, product management, operations research, and other applied sciences that deal with large quantities of data. The objective is to explain most of the covariability among a number of observable random variables in terms of a smaller number of unobservable latent variables called factors. The observable random variables are modeled as linear combinations of the factors, plus unique variance terms. Eigenvalues are used in analysis used by $Q$-methodology software; factors with eigenvalues greater than 1.00 are considered significant, explaining an important amount of the variability in the data, while eigenvalues less than 1.00 are considered too weak, not explaining a significant portion of the data variability.
+
+\subsubsection{Bayesian Information Criterion}\index{Bayesian information criterion (BIC)}\index{Schwarz criterion|see{Bayesian\\ information criterion}}\label{Bayesian information criterion (BIC)}
+The \emph{Bayesian information criterion} (BIC) is a model selection criterion using parametric models having different numbers of parameters.
+\margincomment{BIC is also known as the \emph{Schwarz criterion}, developed by Gideon E. Schwarz}
+Similar in nature to the AIC\index{Akaike information criterion (AIC)}, BIC attempts to estimate model parameters using maximum likelihood estimation. It is possible to increase the likelihood by adding additional parameters, which may result in model overfitting. The BIC resolves the problem by introducing a \emph{penalty term} for the number of parameters in the model. The formula for BIC is,
+\begin{equation}
+	{-2 \cdot \ln{p(x|k)}} \approx \mathrm{BIC} = {-2 \cdot \ln{L} + k \ln(n) }.
+\label{eq:bic}
+\end{equation}
+where \\
+$x$ = the observed data, \\
+$n$ = the number of data points in $x$, the number of observations, or equivalently, the sample size, \\
+$k$ = the number of free parameters to be estimated. If the estimated model is a linear regression, $k$ is the number of regressors, including the constant, \\
+$p(x|k)$ = the likelihood of the observed data given the number of parameters,\\
+$L$ = the maximized value of the likelihood function for the estimated model.
+\bigskip
+
+Under the assumption that the model errors or disturbances are normally distributed, \eqref{eq:bic} becomes (up to an additive constant, which depends only on $n$ and not on the model),
+\[
+\mathrm{BIC} = n \ln\left(\frac{\mathrm{RSS}}{n}\right) + k \ln(n).
+\]
+where RSS is the \emph{residual sum of squares} from the estimated model. Note that the term for $-2 \cdot \ln{L}$ used in this specialization is equal to the rescaled normal log likelihood up to an additive constant that depends only on $n$. Expressed in terms similar to the AIC notation of \eqref{eq:aic},
+\[
+\mathrm{BIC}(\ell)=\ln(\tilde{\sigma}_{\ell}^2) + \frac{\ell \ln(T)}{T}
+\]
+where the penalty for each parameter used is 2 for AIC and $\ln(T)$ for BIC. ``BIC tends to select a lower AR model when the sample size is moderate or large'' \cite[p. 42]{tsay2005aft}. The BIC penalizes free parameters more strongly than does the Akaike information criterion.
+
+Given any set of estimated models, the model with the lowest value of BIC is preferred. The BIC is an increasing function of RSS and an increasing function of $k$. Unexplained variation in the dependent variable and the number of explanatory variables increase the value of BIC. \margincomment[red]{Lower BIC implies either fewer explanatory variables, better fit, or both.}
+
+The BIC can be used to compare estimated models only when the numerical values of the dependent variable are identical for all estimates being compared. The models being compared need not be nested, unlike the case when models are being compared using an $F$ or likelihood ratio test.
+
+\subsection{Multivariate Time Series Library}
+Here we explore Multivariate Time Series Library in R \cite{dse-R}, which uses prior research to create an R package for modeling dynamic systems \cite{gilbert1993ssarma,gilbert1995cveass,gilbert2000nocots}.
+\rpkg{dse}\index{R language}
+We will make a multivariate autoregressive analysis similar to what we created in Section~\ref{mAr}, but in this R package implementation, the estimation is done for us. We can compare two different methods, and compare the results in Figure~\ref{figure:dse-varx}.
+
+\ecaption{Vector Autoregressive Residuals in R}
+\begin{verbatim}
+pwr<-read.table("Power and NG.txt", header=T)
+
+# Dynamic systems package
+install.packages("dse")
+library("dse1")
+library("dse2")
+
+# Estimation
+# Try it for electricity price autoregression
+gas.weather<-pwr[,3:6] # Model input
+pwr.mwh<-pwr[,2]	# Model output
+
+# Make a TSdata object
+pwrdata<-TSdata(input=gas.weather, output=pwr.mwh)
+
+# Estimate parameters using autoregression
+pwr.VARXar<-estVARXar(pwrdata)
+
+# Estimate parameters using least squares
+pwr.VARXls<-estVARXls(pwrdata)
+
+# Take a look at the fitted graphs
+par(mfcol=c(2,1))
+plot(pwr.VARXar$estimates$pred, typ="l",
+      ylab="Prediction", main="Autoregressive Estimation", col="red")
+      
+plot(pwr.VARXls$estimates$pred, typ="l",
+      ylab="Prediction", main="Least Squares Estimation", col="blue")
+
+arma<-ARMA(A=pwr.VARXls$model$A, B=pwr.VARXls$model$B,
+      C=pwr.VARXls$model$C)
+      
+arma$coefficients
+\end{verbatim}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[scale=.65]{dse-varx}
+  \caption[Comparing Autoregressive and Least Squares Estimation]{Here, we compare autoregressive and least squares estimation methods in a vector autoregressive model of the same variables.}
+  \label{figure:dse-varx}
+\end{figure}
+
+%\subsection{Statistical Factor Analysis}
+
+%\subsection{Asymptotic PCA}

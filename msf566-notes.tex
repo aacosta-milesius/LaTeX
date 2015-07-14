@@ -1,0 +1,93 @@
+\documentclass[11pt,twoside]{article}
+\usepackage{setspace,amssymb,latexsym,amsmath,amscd,epsfig,amsthm}
+\usepackage{array,color}
+\usepackage[english]{babel}
+\usepackage{makeidx}
+\usepackage{booktabs}
+\usepackage{apacite}
+
+\newcommand{\fts}{financial time series}
+\newcommand{\Rversion}{2.9.0} %% CHANGE Whenever the version of R changes
+
+\newcommand{\margincomment}[2][blue]{\marginpar{\begin{small}\begin{flushleft}\textcolor{#1}{#2}\end{flushleft}\end{small}}}
+
+%\newcommand\citeA[1]{\cite{#1}} % If I don't use name-year, I need a \citeA tag.
+%\usepackage[left=2.5cm,top=2.5cm,right=4cm]{geometry}
+%\usepackage{moreverb} % Used for line-numbered verbatim text listings.
+\graphicspath{{./images/}}
+
+\makeindex
+
+% List of Examples Header
+\newcommand\ecaption[1]{\addcontentsline{xmp}{example}{#1}}
+\makeatletter \newcommand\listofexamples {\section*{Code Samples}\@starttoc{xmp}}
+\newcommand\l@example[2] {\par\noindent#1~\dotfill\textmd{#2}\par} \makeatother
+%
+
+% List of R Packages
+\newcommand\rpkg[1]{\addcontentsline{Rpkg}{rpkg}{#1}}
+\makeatletter \newcommand\listofrpkgs {\section*{R Packages}\@starttoc{Rpkg}}
+\newcommand\l@rpkg[2] {\par\noindent#1~\dotfill\textmd{#2}\par} \makeatother
+%
+
+% Only make the document for the sections as needed
+%\includeonly{msf566-notes-3}
+
+% SOURCES
+% http://faculty.chicagogsb.edu/ruey.tsay/teaching/bs41202/sp2008/
+% http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2/
+
+\begin{document}
+\pagestyle{myheadings}
+\markboth{Financial Time Series Analysis}{MSF 566 Lecture Notes}
+\title{MSF 566 - Financial Time Series Analysis \\ Spring 2009 \\ Lecture Notes}
+\author{Andrew P. Acosta}
+\date{}
+
+\pagenumbering{roman}
+\maketitle
+\thanks{The following collection of notes is the work product and intellectual property of Andrew P. Acosta. It is shared freely with the assumption that they not be relied upon as a primary source of research. Any errors found are his alone. Please send any comments and advice on errors and omissions to the author at \texttt{aacosta@stuart.iit.edu}. \\
+\tiny{Document typeset using \AmS{}-\LaTeX{} on \today{}.}}
+
+\tableofcontents
+\clearpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\newpage
+\listofexamples
+\newpage
+\listofrpkgs
+\cleardoublepage
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\pagenumbering{arabic}
+\include{msf566-notes-1}
+\include{msf566-notes-2}
+\include{msf566-notes-3}
+\include{msf566-notes-4}
+\include{msf566-notes-5}
+\include{msf566-notes-6}
+\include{msf566-notes-7}
+\include{msf566-notes-8}
+\include{msf566-notes-9}
+\include{msf566-notes-10}
+\include{msf566-notes-11}
+\include{msf566-notes-12}
+\include{msf566-notes-13}
+\include{msf566-notes-14}
+
+%\addcontentsline{toc}{section}{References}
+\bibliographystyle{apacite}
+\bibliography{msf566-notes}
+
+\clearpage
+\addcontentsline{toc}{section}{Index}
+\markboth{Index}{Index}
+\printindex
+\end{document} 

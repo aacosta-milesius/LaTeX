@@ -1,0 +1,159 @@
+\section{Continuous-Time Models}
+\paragraph{Primary Text Reading.} \citeA[chap. 6]{tsay2005aft}\index{Tsay, Ruey}
+
+\paragraph{Discrete-Time Models.} Although it is observed that securities prices move in discrete ``ticks'', it is often convenient to view the \fts{} as \emph{continuous} function. There are some benefits to doing this. One of the main benefits is having a function on which can perform analysis -- get its derivative, for example, or make interpolations where missing data exists. However, this convenience comes at a cost. The mathematical complexity increases dramatically, and we require a different set of rules for \emph{real analysis}. Real analysis is the area of mathematics that studies concepts such as sequences and their limits, continuity, differentiation, integration and sequences of functions. 
+
+\paragraph{Continuous-Time Stochastic Concepts.} We begin with the definition of a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a nonempty space, $\mathcal{F}$ is a $\sigma$-field consisting of subsets of $\Omega$, and $\mathbb{P}$ is a probability measure.
+
+Given a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and a measurable state space $(E, \mathcal{E})$, a stochastic process is a family $(X_t)t \geq 0$ such that $X_t$ is an $E$ valued random variable for each time
+$t \geq 0$. For simplicity, we refer to a stochastic process as $\{x_t\}$, keeping in mind that $t$ is continuous.
+
+\subsection{Wiener Process}\index{Wiener process}
+In discrete-time mathematics, shocks form a white noise process, but in continuous-time, we use a \emph{Wiener process}, which is also known as \emph{standard Brownian motion}. Here is some R code for generating a Wiener process.
+\ecaption{Wiener process in R}\index{R language}
+\begin{verbatim}
+n<-3000
+epsi<-rnorm(n,0,1)
+w=cumsum(epsi)/sqrt(n)
+plot(w, type=`l')
+\end{verbatim}
+\margincomment[red]{Brownian motion variability increases with time.}
+This is quite similar to the R code that generated Figure~\ref{figure:three-walks} \\ \texttt{plot(cumsum(rnorm(20000)),type=`l')}.
+
+\paragraph{Martingales.}\index{martingales} A \emph{martingale} is a stochastic process, or a sequence of random variables, such that the conditional expected value of an observation at some time $t$, given all the observations up to some earlier time $s$, is equal to the observation at that earlier time $s$.
+
+To produce a martingale in Excel is very simple. Enter 0 in cell A1. In cell A2 enter \texttt{=A1+NORMINV(RAND(),0,1)}. Copy cell A2 by dragging and creating 500 copies. This will create a martingale series with $\mu=0$ and $\sigma=1$. Notice that for the entire series $\mu \ne 0$ and $\sigma \ne 1$. This condition only applies at each time step. If a polynomial $f(x,t)$ satisfies the equation
+\[
+\Big( \frac{\partial}{\partial t} + \frac12 \frac{\partial^2}{\partial x^2} \Big) f(x,t) = 0,
+\]
+then the stochastic process $M_t = f ( W_t, t ) \,$ is a martingale, where $W_t$ is a Wiener process.
+
+\subsection{It\^{o}'s Lemma}\index{It\^{o}'s lemma}
+It\^{o}'s lemma starts with an \emph{It\^{o} process}, an adapted stochastic process which can be expressed as the sum of an integral with respect to Brownian motion and an integral with respect to time,
+\begin{equation}
+X_t=X_0+\int_0^t\sigma_s\,dB_s+\int_0^t\mu_s\,ds.
+\label{eq:ito-process}
+\end{equation}
+where $B$ is a Brownian motion and it is required that $\sigma$ is a predictable $B$-integrable process, and $\mu$ is predictable and Lebesgue integrable, and any twice continuously differentiable function $f$ on the real numbers, then $f(X)$ is also an It\^{o} process satisfying
+\begin{align}
+df(X_t) &= f^\prime(X_t)\,dX_t + \frac{1}{2}f^{\prime\prime}(X_t)\sigma^2_t\,dt \notag \\
+&= f^\prime(X_t)\sigma_t\,dB_t + \left(f^\prime(X_t)\mu_t+\frac{1}{2}f^{\prime\prime}(X_t)\sigma^2_t\right)\,dt. \notag
+\end{align}
+
+which by It\^{o}'s lemma
+\begin{align}
+df(t,X_t)&=\dot{f}(t,X_t)\,dt+f'(t,X_t)\,dX_t+\frac{1}{2}f''(t,X_t)\sigma^2_t\,dt, \notag \\ &=\dot{f}(t,X_t)\,dt+f'(t,X_t)(\mu_t\,dt + \sigma_t\,dB_t)+\frac{1}{2}f''(t,X_t)\sigma^2_t\,dt.
+\end{align}
+
+The lemma result is the stochastic calculus counterpart of the chain rule of Newtonian calculus, and it can be thought of as the Taylor series expansion and retaining the second order term related to the stochastic component change.
+
+\subsection{Stochastic Differentials}
+A \emph{stochastic differential equation}\index{stochastic differential equation} (SDE) is a differential equation where at least one of the terms is a stochastic process, resulting in a solution which is itself a stochastic process. Typically, SDEs incorporate white noise which can be thought of as the derivative of Brownian motion. However, it is worth mentioning that other types of random fluctuations are possible, such as jump processes, which we cover in Section~\ref{jump-diffusion}.
+
+The typical form of an SDE is
+\begin{equation}
+\mathrm{d} X_t = \mu(X_t,t)\, \mathrm{d} t +  \sigma(X_t,t)\, \mathrm{d} B_t , 
+\label{eq:sde-form}
+\end{equation}
+where $B$ is a Wiener process.
+
+\paragraph{Example.} Assume that the price of a stock follows a geometric Brownian motion. What is the distribution of the log return? To answer this question, we need It\^{o} calculus. 
+
+Let $G(x)$ be a differentiable function of $x$. 
+What is $dG(x)$? \\
+We begin with the Taylor expansion,
+\[
+\Delta G \equiv G(x+\Delta x)-G(x) = \frac{\partial G}{\partial x} \Delta x 
++ \frac{1}{2} \frac{\partial^2 G}{\partial x^2} (\Delta x)^2 +\frac{1}{6}\frac{\partial^3 g}{\partial x^3}(\Delta x)^3 + \cdots,
+\]
+Letting $\Delta x \to 0$, we have
+\[
+dG = \frac{\partial G}{\partial x}dx.
+\]
+Next, $G(x,y)$
+\[
+\Delta G =\frac{\partial G}{\partial x}\Delta x + \frac{\partial G}{\partial y}\Delta y + \frac{1}{2} \frac{\partial^2 G}{\partial x^2} (\Delta x)^2
++ \frac{\partial^2 G}{\partial x \partial y} \Delta x \Delta y + \frac{1}{2} \frac{\partial^2 G}{\partial y^2} (\Delta y)^2 + \cdots,
+\]
+Taking limits as $\Delta x \to 0$ and $\Delta y \to 0$, we have
+\[
+dG = \frac{\partial G}{\partial x}dx + \frac{\partial G}{\partial y}dy.
+\]
+
+\paragraph{Stochastic differentiation.} Now, consider $G(x_t , t)$ with $x_t$ being an It\^{o} process.
+\[
+\Delta G =\frac{\partial G}{\partial x}\Delta x + \frac{\partial G}{\partial t}\Delta t + \frac{1}{2} \frac{\partial^2 G}{\partial x^2} (\Delta x)^2
++ \frac{\partial^2 G}{\partial x \partial t} \Delta x \Delta t + \frac{1}{2} \frac{\partial^2 G}{\partial t^2} (\Delta t)^2 + \cdots,
+\]
+A discretized version of the It\^{o} process is
+\[
+\Delta x = \mu_* \Delta t + \sigma_* \epsilon \sqrt{\Delta t},
+\]
+where $\mu_*=\mu(x_t,t)$ and $\sigma_*=\sigma(x_t,t)$. Therefore,
+\begin{eqnarray}
+(\Delta x)^2 &=& \mu^2_*(\Delta t)^2+\sigma^2_* \epsilon^2 \Delta t + 2 \mu_*\sigma_*\epsilon(\Delta t)^{3/2} \notag \\
+&=& \sigma^2_*\epsilon^2 \Delta t+H(\Delta t). \notag
+\end{eqnarray}
+Thus, $(\Delta x)^2$ contains a term of order $\Delta t$.
+\begin{subequations}
+\begin{eqnarray}
+	E(\sigma^2_* \epsilon^2 \Delta t) &=& \sigma^2_* \Delta t, \label{eq:ito-E} \\
+	\text{Var}(\sigma^2_* \epsilon^2 \Delta t) &=& E[\sigma^4_* \epsilon^4 (\Delta t)^2] - [E(\sigma^2_*\epsilon^2 \Delta t)]^2 = 2\sigma^4_*(\Delta t)^2, \label{eq:ito-Var}
+\end{eqnarray}
+\end{subequations}
+where we use $E(\epsilon^4) = 3$. These two properties show that
+\[
+\sigma^2_* \epsilon^2 \Delta t \to \sigma^2_* \Delta t \quad \text{as} \quad \Delta t \to 0.
+\]
+Consequently,
+\[
+(\Delta x)^2 \to \sigma^2_* dt \quad \text{as} \quad \Delta t \to 0.
+\]
+With this result, we have
+\begin{eqnarray}
+dG &=& \frac{\partial G}{\partial x}dx + \frac{\partial G}{\partial t}dt + \frac{1}{2}\frac{\partial^2 G}{\partial x^2}\sigma^2_* dt \notag \\
+&=& \Bigg( \frac{\partial G}{\partial x} \mu_* + \frac{\partial G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial x^2}\sigma^2_* \Bigg) dt + \frac{\partial G}{\partial x} \sigma_* dw_t,
+\label{eq:ito-lemma}
+\end{eqnarray}
+which is It\^{o}'s lemma. Now that we have the expected value \eqref{eq:ito-E}, and variance \eqref{eq:ito-Var}, we can determine the distribution of the log return.
+
+\subsection{Stochastic Integrals}\index{stochastic integrals}
+The rules of calculus, as defined by Newton, Leibniz, and others apply to a smooth function $f(x)$ where we can obtain the derivative $f'(x)$. This derivative is also the tangent line that intersects at exactly one point to $f(x)$. A Wiener process is always jagged, and finding a single tangent line that intersects with the line created by that process is impossible because it will intersect the line \emph{infinite} number of times.  Therefore, we need to modify the rules of calculus to adapt to the rules of Newtonian calculus, while still preserving some of the same concepts such as integration, as we saw in \eqref{eq:ito-lemma}.
+
+The It\^{o} stochastic integral represents the payoff of a continuous-time  trading strategy consisting of holding an amount $H_t$ of the stock at time $t$, 
+\[
+Y_t=\int_0^t H_s\,dX_s.
+\]
+In this situation, the condition that $H$ is adapted corresponds to the necessary restriction that the trading strategy can only make use of the available information at any time. This prevents the possibility of unlimited gains through high frequency trading, that is, buying the stock just before each up-tick in the market and selling before each down-tick. Similarly, the condition that $H$ is adapted implies that the stochastic integral will not diverge when calculated as a limit of Riemann sums.
+
+Important results of It\^{o} calculus include the integration by parts formula and It\^{o}'s lemma, which is a change of variables formula. These differ from the formulas of standard calculus, due to quadratic variation terms.
+
+\subsection{Jump-Diffusion Model}\label{jump-diffusion}
+When we view the activity of \fts{} in continuous time, we apply a \emph{diffusion model}, a concept borrowed from physics. In general, diffusion is the process whereby particles (\textit{or, in our case prices and asset returns}) intermingle as the result of their spontaneous movement caused by agitation (\textit{market forces}). This way, we can view prices and asset returns as ``particles'' moved in continuous random motion.
+
+There are some weaknesses of diffusion models, which include,
+\begin{itemize}
+\item There is no \emph{volatility smile}, the convex function of implied volatility with respect to option strike
+price,
+\item Failure to capture effects of rare events in the distribution tails,
+\item Prices sometimes open at significantly different levels than they close in the previous trading session.
+\end{itemize}
+
+Trying to combine both the phenomenon of ``jumps'' (\textit{the occasional non-continuous nature of market prices}) and continuous-time finance, we have the \emph{jump diffusion model}.
+The simple jump diffusion model postulates that the price follows the stochastic differential equation, and is an extension to \eqref{eq:sde-form}. Jumps are governed by a probability law such as a Poisson process, where $X_t$ is a Poisson process if
+\[
+Pr(X_t=m) \frac{\lambda^m t^m}{m!}\exp(-\lambda t), \quad \lambda>0.
+\]
+
+We can use a special jump diffusion model,
+\[
+\frac{dP_t}{P_t}=\mu dt + \sigma dw_t + d \Bigg( \sum^{n_t}_{i=1}(J_i-1) \Bigg),
+\]
+where, \\
+$w_t$ is a Wiener process, \\
+$n_t$ is a Poisson process with rate $\lambda$, \\
+$\{J_i\}$ is iid such that $X=\ln(J)$ has a double exponential distribution with pdf
+\[
+f_x(x) = \frac{1}{2\eta} e^{-|x-k|/\eta}, \quad 0<\eta<1.
+\]
+The above three processes are independent.
