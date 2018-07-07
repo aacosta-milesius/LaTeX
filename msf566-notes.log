@@ -1,0 +1,905 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.4.5)  20 APR 2018 11:56
+entering extended mode
+**./msf566-notes.tex
+(msf566-notes.tex
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\artic
+le.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size1
+1.clo"
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\s
+etspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\a
+mssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\a
+msfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\latex
+sym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+smath.sty"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+stext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+sgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen103
+))
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+sbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+sopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks16
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks17
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\am
+scd.sty"
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks20
+\minaw@=\dimen112
+\bigaw@=\dimen113
+\minCDarrowwidth=\dimen114
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\e
+psfig.sty"
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\g
+raphicx.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\k
+eyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\g
+raphics.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\t
+rig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-c
+fg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-d
+ef\pdftex.def"
+File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+\epsfxsize=\dimen117
+\epsfysize=\dimen118
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\ams
+thm.sty"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks27
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\arra
+y.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen119
+\extrarowheight=\dimen120
+\NC@list=\toks28
+\extratabsurround=\skip49
+\backup@length=\skip50
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\c
+olor.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-c
+fg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\ba
+bel.sty"
+Package: babel 2017/11/03 3.15 The Babel package
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\sw
+itch.def"
+File: switch.def 2017/11/03 3.15 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblo
+pts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-engl
+ish\english.ldf"
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\ba
+bel.def"
+File: babel.def 2017/11/03 3.15 Babel common definitions
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\sw
+itch.def"
+File: switch.def 2017/11/03 3.15 Babel switching mechanism
+)
+\babel@savecnt=\count99
+\U@D=\dimen121
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\makei
+dx.sty"
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\booktabs\b
+ooktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen122
+\lightrulewidth=\dimen123
+\cmidrulewidth=\dimen124
+\belowrulesep=\dimen125
+\belowbottomsep=\dimen126
+\aboverulesep=\dimen127
+\abovetopsep=\dimen128
+\cmidrulesep=\dimen129
+\cmidrulekern=\dimen130
+\defaultaddspace=\dimen131
+\@cmidla=\count100
+\@cmidlb=\count101
+\@aboverulesep=\dimen132
+\@belowrulesep=\dimen133
+\@thisruleclass=\count102
+\@lastruleclass=\count103
+\@thisrulewidth=\dimen134
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\apacite\ap
+acite.sty"
+Package: apacite 2013/07/21 v6.03 APA citation
+\c@BibCnt=\count104
+\bibleftmargin=\skip51
+\bibindent=\skip52
+\bibparsep=\skip53
+\bibitemsep=\skip54
+\biblabelsep=\skip55
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\g
+eometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\
+ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count105
+\Gm@cntv=\count106
+\c@Gm@tempcnt=\count107
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks29
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\g
+eometry.cfg"))
+\@indexfile=\write3
+\openout3 = `msf566-notes.idx'.
+
+
+Writing index file msf566-notes.idx
+(msf566-notes.aux (msf566-notes-1.aux) (msf566-notes-2.aux) (msf566-notes-3.aux
+) (msf566-notes-4.aux) (msf566-notes-5.aux) (msf566-notes-6.aux)
+(msf566-notes-7.aux) (msf566-notes-8.aux)
+No file msf566-notes-9.aux.
+No file msf566-notes-10.aux.
+No file msf566-notes-11.aux.
+No file msf566-notes-12.aux.
+No file msf566-notes-13.aux.
+No file msf566-notes-14.aux.
+)
+\openout1 = `msf566-notes.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\sup
+p-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count108
+\scratchdimen=\dimen143
+\scratchbox=\box28
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen144
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks31
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\e
+pstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\g
+rfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\k
+voptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\pdftexcmds.sty"
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\c@maskedRefs=\count114
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\apacite\en
+glish.apc"
+File: english.apc 2013/07/21 v6.03 apacite language file
+LaTeX Info: Redefining \BPBI on input line 129.
+LaTeX Info: Redefining \BHBI on input line 130.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 429.3521pt, 113.81102pt)
+* v-part:(T,H,B)=(71.13188pt, 628.44073pt, 95.39737pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=429.3521pt
+* \textheight=628.44073pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\u
+msa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\u
+msb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 41.
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy
+.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) (msf566-notes.toc [1
+
+{C:/Users/Andrew Acosta/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+)
+\tf@toc=\write4
+\openout4 = `msf566-notes.toc'.
+
+ [3] (msf566-notes.lof)
+\tf@lof=\write5
+\openout5 = `msf566-notes.lof'.
+
+ [4
+
+] (msf566-notes.lot)
+\tf@lot=\write6
+\openout6 = `msf566-notes.lot'.
+
+
+[5] (msf566-notes.xmp)
+\tf@xmp=\write7
+\openout7 = `msf566-notes.xmp'.
+
+ [6]
+\openout2 = `msf566-notes-1.aux'.
+
+ (msf566-notes-1.tex [1
+
+
+]
+<./images/pdf.pdf, id=36, pagebox=cropbox, 289.08pt x 178.6675pt>
+File: ./images/pdf.pdf Graphic file (type pdf)
+<use ./images/pdf.pdf>
+Package pdftex.def Info: ./images/pdf.pdf  used on input line 46. on input line
+ 46.
+Package pdftex.def Info: Requested size: 216.80946pt x 134.00029pt on input lin
+e 46.
+<./images/cdf.pdf, id=37, pagebox=cropbox, 289.08pt x 178.6675pt>
+File: ./images/cdf.pdf Graphic file (type pdf)
+<use ./images/cdf.pdf>
+Package pdftex.def Info: ./images/cdf.pdf  used on input line 53. on input line
+ 53.
+Package pdftex.def Info: Requested size: 216.80946pt x 134.00029pt on input lin
+e 53.
+ [2 <./images/pdf.pdf> <./images/cdf.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+[3] [4] [5] [6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 169.
+
+
+("C:\Users\Andrew Acosta\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscm
+r.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 169.
+<./images/pt-est.pdf, id=80, pagebox=cropbox, 922.44624pt x 578.16pt>
+File: ./images/pt-est.pdf Graphic file (type pdf)
+<use ./images/pt-est.pdf>
+Package pdftex.def Info: ./images/pt-est.pdf  used on input line 182. on input 
+line 182.
+Package pdftex.def Info: Requested size: 322.86102pt x 202.35902pt on input lin
+e 182.
+ [7] [8 <./images/pt-est.pdf>]
+<./images/rej-region2.pdf, id=100, pagebox=cropbox, 289.08pt x 178.6675pt>
+File: ./images/rej-region2.pdf Graphic file (type pdf)
+<use ./images/rej-region2.pdf>
+Package pdftex.def Info: ./images/rej-region2.pdf  used on input line 247. on i
+nput line 247.
+Package pdftex.def Info: Requested size: 202.35461pt x 125.06639pt on input lin
+e 247.
+<./images/rej-region.pdf, id=101, pagebox=cropbox, 289.08pt x 178.6675pt>
+File: ./images/rej-region.pdf Graphic file (type pdf)
+<use ./images/rej-region.pdf>
+Package pdftex.def Info: ./images/rej-region.pdf  used on input line 253. on in
+put line 253.
+Package pdftex.def Info: Requested size: 202.35461pt x 125.06639pt on input lin
+e 253.
+ [9] [10 <./images/rej-region2.pdf> <./images/rej-region.pdf>] [11]) [12]
+\openout2 = `msf566-notes-2.aux'.
+
+ (msf566-notes-2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+\OT1/cmtt/m/n/10.95 http://cran.r-project.org/manuals.html
+ []
+
+[13
+
+
+] [14]
+<./images/intdef.pdf, id=138, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/intdef.pdf Graphic file (type pdf)
+<use ./images/intdef.pdf>
+Package pdftex.def Info: ./images/intdef.pdf  used on input line 85. on input l
+ine 85.
+Package pdftex.def Info: Requested size: 252.94437pt x 252.94437pt on input lin
+e 85.
+ [15 <./images/intdef.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 123
+.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 123.
+
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbackslash' on input line 123.
+
+[16] [17] [18]
+<./images/sp_mid.pdf, id=231, pagebox=cropbox, 665.48625pt x 502.87875pt>
+File: ./images/sp_mid.pdf Graphic file (type pdf)
+<use ./images/sp_mid.pdf>
+Package pdftex.def Info: ./images/sp_mid.pdf  used on input line 234. on input 
+line 234.
+Package pdftex.def Info: Requested size: 332.74231pt x 251.43875pt on input lin
+e 234.
+
+Underfull \hbox (badness 2717) in paragraph at lines 235--235
+[]\OT1/cmr/m/n/10.95 Figure 2.2: Plot of \OT1/cmtt/m/n/10.95 SP-MidCap-sort.csv
+ \OT1/cmr/m/n/10.95 Data Set us-ing MAT-LAB state-ment
+ []
+
+<./images/mid400.pdf, id=232, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/mid400.pdf Graphic file (type pdf)
+<use ./images/mid400.pdf>
+Package pdftex.def Info: ./images/mid400.pdf  used on input line 245. on input 
+line 245.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 245.
+
+Underfull \hbox (badness 6978) in paragraph at lines 246--246
+[]\OT1/cmr/m/n/10.95 Figure 2.3: Plot of \OT1/cmtt/m/n/10.95 SP-MidCap-sort.csv
+ \OT1/cmr/m/n/10.95 Data Set us-ing R pro-gram-ming.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
+\OT1/cmtt/m/n/10.95 with(mid400, plot(Open, type="l", col="red", ylab="Open", m
+ain="S&P 400
+ []
+
+[19]) [20 <./images/sp_mid.pdf>] [21 <./images/mid400.pdf>]
+\openout2 = `msf566-notes-3.aux'.
+
+ (msf566-notes-3.tex
+Underfull \hbox (badness 3078) in paragraph at lines 19--21
+\OT1/cmr/m/n/10.95 in-volved. This is a com-pound re-turn. The $\OML/cmm/m/it/1
+0.95 k$\OT1/cmr/m/n/10.95 -period sim-ple net re-turn is
+ []
+
+[22
+
+
+] [23]
+<./images/ibm-qq.pdf, id=328, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/ibm-qq.pdf Graphic file (type pdf)
+<use ./images/ibm-qq.pdf>
+Package pdftex.def Info: ./images/ibm-qq.pdf  used on input line 137. on input 
+line 137.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 137.
+ [24]
+<./images/ibm-ret.pdf, id=332, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/ibm-ret.pdf Graphic file (type pdf)
+<use ./images/ibm-ret.pdf>
+Package pdftex.def Info: ./images/ibm-ret.pdf  used on input line 156. on input
+ line 156.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 156.
+ [25 <./images/ibm-qq.pdf>]) [26 <./images/ibm-ret.pdf>]
+\openout2 = `msf566-notes-4.aux'.
+
+
+(msf566-notes-4.tex
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 21.
+
+[27
+
+
+]
+<./images/aapl-acf.pdf, id=464, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/aapl-acf.pdf Graphic file (type pdf)
+<use ./images/aapl-acf.pdf>
+Package pdftex.def Info: ./images/aapl-acf.pdf  used on input line 79. on input
+ line 79.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 79.
+ [28] [29 <./images/aapl-acf.pdf>]
+<./images/noise.pdf, id=541, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/noise.pdf Graphic file (type pdf)
+<use ./images/noise.pdf>
+Package pdftex.def Info: ./images/noise.pdf  used on input line 89. on input li
+ne 89.
+Package pdftex.def Info: Requested size: 354.12057pt x 354.12057pt on input lin
+e 89.
+ [30 <./images/noise.pdf>]
+<./images/pacf.pdf, id=855, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/pacf.pdf Graphic file (type pdf)
+<use ./images/pacf.pdf>
+Package pdftex.def Info: ./images/pacf.pdf  used on input line 153. on input li
+ne 153.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 153.
+ [31] [32 <./images/pacf.pdf>] [33]
+<./images/gnp-acf.pdf, id=996, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/gnp-acf.pdf Graphic file (type pdf)
+<use ./images/gnp-acf.pdf>
+Package pdftex.def Info: ./images/gnp-acf.pdf  used on input line 227. on input
+ line 227.
+Package pdftex.def Info: Requested size: 328.82458pt x 328.82458pt on input lin
+e 227.
+<./images/aapl-ret-ma30.pdf, id=997, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/aapl-ret-ma30.pdf Graphic file (type pdf)
+<use ./images/aapl-ret-ma30.pdf>
+Package pdftex.def Info: ./images/aapl-ret-ma30.pdf  used on input line 246. on
+ input line 246.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 246.
+ [34] [35 <./images/gnp-acf.pdf>] [36 <./images/aapl-ret-ma30.pdf>]
+<./images/three-walks.pdf, id=1327, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/three-walks.pdf Graphic file (type pdf)
+<use ./images/three-walks.pdf>
+Package pdftex.def Info: ./images/three-walks.pdf  used on input line 291. on i
+nput line 291.
+Package pdftex.def Info: Requested size: 303.53633pt x 303.53633pt on input lin
+e 291.
+
+Overfull \hbox (4.3227pt too wide) in paragraph at lines 288--295
+[]\OT1/cmr/m/n/10.95 Using a sim-ple R state-ment, \OT1/cmtt/m/n/10.95 plot(cum
+sum(rnorm(20000)),type="l") \OT1/cmr/m/n/10.95 used three times,
+ []
+
+[37 <./images/three-walks.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 335--338
+
+ []
+
+[38]
+<./images/aapl-stl.pdf, id=1400, pagebox=cropbox, 505.89pt x 505.89pt>
+File: ./images/aapl-stl.pdf Graphic file (type pdf)
+<use ./images/aapl-stl.pdf>
+Package pdftex.def Info: ./images/aapl-stl.pdf  used on input line 384. on inpu
+t line 384.
+Package pdftex.def Info: Requested size: 354.12057pt x 354.12057pt on input lin
+e 384.
+ [39] [40 <./images/aapl-stl.pdf>] [41] [42]) [43]
+\openout2 = `msf566-notes-5.aux'.
+
+ (msf566-notes-5.tex
+[44
+
+
+] [45] [46] [47] [48]
+Overfull \hbox (12.53815pt too wide) in paragraph at lines 175--176
+[]\OT1/cmr/m/n/10.95 We can ex-am-ine the re-sults graph-i-cally with 13 dif-fe
+r-ent types of graphs us-ing \OT1/cmtt/m/n/10.95 plot(spxG)\OT1/cmr/m/n/10.95 .
+
+ []
+
+<./images/conditional-sd.pdf, id=1595, pagebox=cropbox, 337.26pt x 336.25626pt>
+
+File: ./images/conditional-sd.pdf Graphic file (type pdf)
+<use ./images/conditional-sd.pdf>
+Package pdftex.def Info: ./images/conditional-sd.pdf  used on input line 193. o
+n input line 193.
+Package pdftex.def Info: Requested size: 269.80836pt x 269.00537pt on input lin
+e 193.
+[49 <./images/conditional-sd.pdf>] [50] [51]) [52]
+\openout2 = `msf566-notes-6.aux'.
+
+ (msf566-notes-6.tex [53
+
+
+]
+[54]
+<./images/logistic.pdf, id=1620, pagebox=cropbox, 289.08pt x 178.6675pt>
+File: ./images/logistic.pdf Graphic file (type pdf)
+<use ./images/logistic.pdf>
+Package pdftex.def Info: ./images/logistic.pdf  used on input line 92. on input
+ line 92.
+Package pdftex.def Info: Requested size: 231.2643pt x 142.93417pt on input line
+ 92.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 118.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 118.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 119.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 119.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 119.
+
+[55 <./images/logistic.pdf>]) [56]
+\openout2 = `msf566-notes-7.aux'.
+
+ (msf566-notes-7.tex) [57
+
+
+]
+\openout2 = `msf566-notes-8.aux'.
+
+
+(msf566-notes-8.tex) [58
+
+
+] (msf566-notes.bbl) [59
+
+
+
+
+
+
+
+]
+No file msf566-notes.ind.
+(msf566-notes.aux (msf566-notes-1.aux) (msf566-notes-2.aux) (msf566-notes-3.aux
+) (msf566-notes-4.aux) (msf566-notes-5.aux) (msf566-notes-6.aux)
+(msf566-notes-7.aux) (msf566-notes-8.aux)
+No file msf566-notes-9.aux.
+No file msf566-notes-10.aux.
+No file msf566-notes-11.aux.
+No file msf566-notes-12.aux.
+No file msf566-notes-13.aux.
+No file msf566-notes-14.aux.
+)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4525 strings out of 493312
+ 66968 string characters out of 3126346
+ 143330 words of memory out of 3000000
+ 7849 multiletter control sequences out of 15000+200000
+ 21261 words of font info for 87 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,12n,26p,1120b,292s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Andrew Acosta/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Andre
+w Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9
+.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Andrew Acosta/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
+Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Andrew Acosta/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/User
+s/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Andrew Acosta/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/User
+s/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr6.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr7.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Andrew Acosta/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/A
+ndrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msl10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Andrew Acosta/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/User
+s/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmti10.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmti9.pfb><C:/Users/Andrew Acosta/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Andrew Acosta/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on msf566-notes.pdf (65 pages, 4457855 bytes).
+PDF statistics:
+ 1734 PDF objects out of 2073 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+

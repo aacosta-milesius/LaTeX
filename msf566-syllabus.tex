@@ -1,0 +1,119 @@
+\documentclass [11pt]{article}
+\usepackage{setspace,amssymb,latexsym,amsmath,amscd,epsfig,amsthm}
+\usepackage[left=2.5cm,top=2.5cm,right=2.5cm]{geometry}%%,nohead,nofoot]{geometry}
+
+\begin{document}
+\pagestyle{myheadings}
+\markright{MSF 566 Syllabus}
+
+\title{MSF 566 - Financial Time Series Analysis\\ Fall 2008 \\ Syllabus}
+\date{}
+%\author{\emph{DRAFT COPY -- Still under revision}}                               
+\maketitle
+\thispagestyle{empty}
+
+\paragraph{Instructor.}
+Andrew P. Acosta \\  E-mail: \texttt{aacosta@stuart.iit.edu}   \\    Phone: 708-267-8048 \\
+Contacting me by email is preferred, \emph{\textbf{and be sure to include MSF 566 in your subject line}}.
+
+\paragraph{Class Meeting.} Monday. 2:00 p.m. -- 4:30 p.m.
+
+\paragraph{Textbook.}
+Tsay, Ruey (2005). \emph{Analysis of financial time series} (2nd ed.). Hoboken, NJ: Wiley.  \linebreak
+(ISBN: 0-471-69074-0)
+
+\paragraph{Course Description.}
+This course develops a portfolio of techniques for the analysis of financial time series. Distribution theory covers the normal, Student $t$, $\chi$-squared and mixture of normals models. Technical analysis covers a variety of trading rules including filters, moving averages, channels and other systems. The first two topics are then combined into an analysis of non-linear time series models for the mean. The course concludes with a review of volatility models including GARCH, E-Garch and stochastic volatility models.
+
+\paragraph{Course Web Page.} We will use the Blackboard software to share documents. You can log-in from:
+\texttt{http://my.iit.edu}. \\
+You should,
+\begin{itemize}
+\item always check for updates to the course, including revisions to notes
+\item download and try out data and function code to get a better understanding of a concept
+\item make sure to read any announcements. 
+\end{itemize}
+
+\paragraph{Software.} Proficiency in R, S-Plus, \textsc{MATLAB}, and Excel is not required, but will be used throughout the course. We will be using \texttt{FinTS}, the financial time series analysis R package and textbook data sets built around Tsay (2005), and any other packages that become necessary. 
+\begin{quote}
+\small{R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS  (\texttt{http://www.r-project.org/}).}
+\end{quote}
+You may obtain R, extensive documentation, and any packages to perform analysis and reporting from the Comprehensive R Archive Network: \texttt{http://cran.r-project.org/}.
+
+\paragraph{Grading.} The final grade for the course will be based on the following items,
+\begin{itemize}
+\item Mid-term exam: 40\%
+\item Final exam: 40\%
+\item Quizzes: 20\%
+\end{itemize}
+
+\paragraph{Academic Integrity.}
+This course will adhere to the university's policy on academic honesty.  Each student is responsible for doing his or her work independently.  Anyone found submitting someone else's work will be dealt with according to university policy.  Cheating or plagiarizing will result in failing the course. 
+ 
+\section*{Course Outline}
+\begin{description}
+\item[Week 1] Introduction \\
+	What is time series analysis? \\
+	Review of matrices, statistics and probability  \\
+	\emph{Tsay ch. 1}
+
+
+\item[Week 2] Introduction to MATLAB and R \\
+	MATLAB matrix and statistical functions \\
+	Downloading and installing R and packages \\
+	\texttt{http://www.r-project.org/about.html} \\
+	\texttt{http://cran.r-project.org/manuals.html}, \textit{especially} \textbf{An Introduction to R} and \linebreak \textbf{R Data Import/Export}
+	
+     
+\item[Week 3] Getting Started with Financial Time Series \\
+	%lec-1-08.pdf \\ % REMOVE LATER
+	\emph{Tsay ch. 1}
+     
+\item[Week 4] Linear Time Series Analysis \\
+	%Technical Analysis: Science or Spurious? \\
+	\emph{Tsay ch. 2}
+
+\item[Week 5] ARMA, and ARIMA Models in Detail\\
+	\emph{Tsay ch. 2}
+	
+\item[Week 6] Conditional Heteroskedastic Models\\
+	Nonlinear Models \\	
+	\emph{Tsay ch. 3, 4}
+	
+\item[Week 7]  Time Series Data Analysis \\
+	Obtaining Data for Analysis: $\text{FRED}^{\tiny{\textregistered}}$, Bloomberg, BLS, \textit{etc.} \\
+	\emph{Tsay ch. 4}
+	 
+\item[Week 8] High-Frequency Data Analysis \\
+	\emph{Tsay ch. 5}
+	     
+\item[Week 9] Continuous-Time Models \\
+	\emph{Tsay ch. 6}
+	
+\item[Week 10]  Midterm Exam
+
+\item[Week 11]  Extreme Values \& Value at Risk \\
+	VaR \\
+	Expected Shortfall \\
+	Multivariate Time Series Analysis \\
+	\emph{Tsay ch. 7, 8}
+	
+\item[Week 12]  Principal Component Analysis and Factor Models \\
+	\emph{Tsay ch. 9} \\
+	\raggedright{Urga, G. (2007). Common Features in Economics and Finance: An Overview of Recent \mbox{Developments}.  \emph{Journal of Business \& Economic Statistics}, 25 (1), 2Ð11. 
+\linebreak doi: 10.1198/073500106000000602}
+	
+\item[Week 13]  Multivariate Volatility Models \\
+	\emph{Tsay ch. 10}
+	
+\item[Week 14]  State-Space Models and Kalman Filters \\
+	\emph{Tsay ch. 11}
+	
+\item[Week 15]  Markov Chain Monte Carlo Methods \\
+	\emph{Tsay ch. 12}
+	
+\item[Week 16] Final Exam \\	
+\end{description}
+
+\tiny{Document typeset using \AmS{}-\LaTeX{}, \today{}.}
+\end{document}

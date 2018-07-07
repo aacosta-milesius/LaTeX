@@ -1,0 +1,20 @@
+\select@language {english}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Normal Probability Density}}{2}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Normal Cumulative Distribution}}{2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Scatterplot and OLS Regression}}{8}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Two-Sided Region of Rejection}}{10}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces One-Sided Region of Rejection}}{10}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Interest Rate Time Series Plot in R}}{15}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces \texttt {SP-MidCap-sort.csv} Data Set in MATLAB}}{20}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces \texttt {SP-MidCap-sort.csv} Data Set in R}}{21}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Q-Q Plot of Returns}}{25}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces IBM Returns}}{26}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces ACF function of AAPL log returns with 15-day lag.}}{29}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Properties of White Noise}}{30}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Comparing ACF with PACF}}{32}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Analysis of U.S. GNP with ACF function}}{35}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces AAPL Log Returns and MA(30)}}{36}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Three Random Walks, no Drift}}{37}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces AAPL Price Series Decomposition}}{40}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces S\&P 500 GARCH Estimate}}{49}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Plot of logistic function in \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {eq:logistic}\unskip \@@italiccorr )}}}}{55}

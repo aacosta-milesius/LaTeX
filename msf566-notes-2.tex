@@ -7,17 +7,17 @@
 
 \subsection{Statistical Computing}
 Many analytical methods are highly complex, involving multiple calculations, formulas, and graphics.\footnote{A good resource for exploring more on statistical computing is the American Statistical Association website for \textbf{Statistics Computing and Graphics} at, \texttt{http://stat-computing.org/}}
-Statistical computing, also known as computational statistics may also be used to refer to computationally-intensive statistical methods including re-sampling methods, Markov chain Monte Carlo methods, local regression, kernel density estimation and generalized additive models.
+Statistical computing, also known as computational statistics may also be used to refer to computationally-intensive statistical methods including resampling methods, Markov chain Monte Carlo methods, local regression, kernel density estimation and generalized additive models.
 
 Both MATLAB and R are statistical computing environments; they both have broad support in the quantitative finance community as well as having a large number of libraries or packages that contain specialized functions. In class, we will attempt to be as platform-independent as possible, as well as trying to avoid proprietary data formats, such as Microsoft Excel. All data sets will be comma-delimited, or tab/space delimited so that they can be used by any editor and work equally well in MATLAB, R, or any other statistical software package.
 
 \subsubsection{MATLAB}
 To MATLAB, \emph{everything} is a matrix, including a single value, a \emph{scalar}. MATLAB has matrix math processing built in as well as a rich set of programming features for data access, graphical user interface, and mathematical computation and simulation. Despite its long list of features, MATLAB is very easy to use and can produce meaningful results in a short time span. MATLAB has robust file processing capability, meaning that very large datasets, perhaps amounting to millions of items, pose no difficulty. Having numerous functions already available and tested make MATLAB a good environment for rapid development of models. Writing programs in a language like C++ requires considerably more commitment of time and programming expertise.
 
-There is a wide literature available for users of MATLAB and numerous examples of functions available through the worldwide web. There are hundreds of user contributions at MATLAB Central.\footnote{The MATLAB Central File Exchange is an excellent source of code samples and ideas in various categories of MATLAB applications, \\ \texttt{http://www.mathworks.com/matlabcentral/fileexchange/loadCategory.do}}
+There is a wide literature available for users of MATLAB and numerous examples of functions available through the worldwide web. There are hundreds of user contributions at MATLAB Central\footnote{The MATLAB Central File Exchange is an excellent source of code samples and ideas in various categories of MATLAB applications, \\ \texttt{http://www.mathworks.com/matlabcentral/fileexchange/loadCategory.do}}.
 
 MATLAB has a rich set of functions for mathematics, statistics, data analysis, and graphics. Additionally, users may write their own scripts and functions in the form of \emph{M-files}, the programming language of MATLAB. 
-The latest technical documentation on MATLAB is available online.\footnote{\texttt{http://www.mathworks.com/access/helpdesk/help/techdoc/index.html}} \citeA{martinez2008csh} provides an excellent resource for statistics in MATLAB.\footnote{An open source software package called Octave, is available for download at \texttt{http://www.gnu.org/software/octave/}. It is mostly compatible with MATLAB, and has an extensive printed documentation \cite{eaton:2008}.}
+The latest technical documentation on MATLAB is available online\footnote{\texttt{http://www.mathworks.com/access/helpdesk/help/techdoc/index.html}}. \citeA{martinez2008csh} provides an excellent resource for statistics in MATLAB.
 
 \ecaption{Normal Probability Density Function in MATLAB}
 This is an example of the Normal Probability Density Function \eqref{eq:pdf} in \textsc{MATLAB}. \emph{This is a simple example, and a more complex version already exists in the MATLAB library of functions.}\index{MATLAB}
@@ -58,7 +58,7 @@ The next example demonstrates how to read Excel workbook data into a MATLAB matr
 \end{table}
 
 \subsubsection{R Language}
-The R environment is a language for statistical computing and advanced graphics. It is a GNU project which means it can be downloaded for free.\footnote{The current version as of \today{}, is \Rversion. To download the latest version of the R environment and any documentation and packages, go to \texttt{http://cran.r-project.org/}.} When we refer to the R statistical environment, for convenience we will identify it as, ``R language'' to mean the entire system of statement syntax, graphics, and packages. Two excellent learning resources are \citeA{Rmanual}, the online R documentation, and \citeA{Rbook}, which contains numerous programming examples.
+The R environment is a language for statistical computing and advanced graphics. It is a GNU project which means it can be downloaded for free.\footnote{To download the latest version of the R environment and any documentation and packages, go to \texttt{http://cran.r-project.org/}.} When we refer to the R statistical environment, for convenience we will identify it as, ``R language'' to mean the entire system of statement syntax, graphics, and packages. Two excellent learning resources are \citeA{Rmanual}, the online R documentation, and \citeA{Rbook}, which contains numerous programming examples.
 
 To demonstrate some basic functionality, we will load a file from Ruey Tsay's teaching website, and plot a time series.\index{Tsay, Ruey}
 \ecaption{Loading data from a website in R}
@@ -130,7 +130,7 @@ sp_mid=dlmread(`/path/SP-MidCap.csv', `,', 1, 1);
 
 There are other methods in MATLAB for loading data and writing results back to a file, but these two will work fine for most purposes. We have also only concerned ourselves with numerical data at this point. We address date conversions in Section~\ref{date-handling}.
 
-\paragraph{R Environment.} Just as we explored one method of loading some tab-delimited data and one method for comma-delimited data in MATLAB, we will discuss two ways in the R environment. One advantage is that we may load column names with our data, something we are unable to do in MATLAB. We will load all data, \emph{including column names}, from the five-column  tab-delimited file, \texttt{SP-MidCap3.txt} using \texttt{read.table}.\index{read.table@\texttt{read.table} (in R)}
+\paragraph{R Environment.} Just as we explored one method of loading tab-delimited data and one method for comma-delimited data in MATLAB, we will discuss two ways in the R environment. One advantage is that we may load column names with our data, something we are unable to do in MATLAB. We will load all data, \emph{including column names}, from the five-column  tab-delimited file, \texttt{SP-MidCap3.txt} using \texttt{read.table}.\index{read.table@\texttt{read.table} (in R)}
 \ecaption{Loading multiple-column tab-delimited text file in R}
 \begin{verbatim}
 mid400<-read.table(`/path/SP-MidCap3.txt', header=T)
@@ -155,7 +155,7 @@ mid400<-read.csv(`/path/SP-MidCap.csv', header=T)
 \end{verbatim}
 Once the data set is loaded, all functions work exactly the same as before.
 
-\subsection{Date Handling}\label{date-handling}\index{epoch date}
+\subsection{Date Handling}\label{date-handling}\index{Epoch Date}
 \paragraph{Date Formatting.} Most computer systems store a date as the number of days or number of minutes since a specific date.
 \marginpar{\begin{small}\begin{flushleft}\textcolor{red}{Be aware of the computer epoch date of the system you import and export into.}\end{flushleft}\end{small}}
 Some Unix systems store the date as number of days since January 1, 1970, while some software may use a different date. This ``epoch date'' may cause confusion when reading and writing dates into a statistical package. For instance, what is the date value of 733671? That depends on which system created that date. This particular date value came from MATLAB, where it represents September 20, 2008, but in Excel (with 1904 Date System enabled) it is September 21, 3912, and it is September 20, 3908 with 1904 Date System disabled.
@@ -192,7 +192,7 @@ There is also an extensive variety of statistical functions available in R. As a
 If, for example, we want the standard deviation of the most recent 200 opening prices (column 2 of the data), we need to specify the range using \texttt{sd(mid400[1:200, 2])}.
 
 \subsection{Functions}
-\paragraph{MATLAB.} Sometimes, the built-in functionality of MATLAB will not be enough to handle specific requirements. In order to extend the environment, users may write functions. Here is an example of a simple moving average.
+\paragraph{MATLAB.} Sometimes, the built-in functionality of MATLAB is not enough to handle specific requirements. In order to extend the environment, users may write functions. Here is an example of a simple moving average.
 \ecaption{Moving Average Function in MATLAB}
 \begin{verbatim}
 function y = movavg(x,p)
@@ -211,7 +211,6 @@ What follows is the actual work of the function. The return variable(s) must be 
 
 
 \paragraph{R Environment.} Since R also is a programming language, there is a specific syntax for writing functions. Here is an example of a simple moving average.
-\pagebreak[3] % This command keeps the code section on the same page.
 \ecaption{Moving Average Function in R}
 \begin{verbatim}
 movavg<-function(x,p) { 
@@ -224,8 +223,7 @@ movavg<-function(x,p) {
     y
 }
 \end{verbatim}
-\pagebreak[3]
-	
+
 The elements of a function are the word \texttt{function} after assignment to the return variable. Comments in R begin with a pound or hash symbol sign (\texttt{\#}). 
 
 What follows is the actual work of the function. The return variable must be set somewhere in this segment. The three-day moving average for the first ten observations is called by, \texttt{movavg(mid400[1:10,2], 3)}.
@@ -251,10 +249,11 @@ To work with the data set as a MATLAB time series, we will explore the \texttt{t
 
 To work with the data set as an R time series, we will explore the \texttt{ts}\index{ts@\texttt{ts} (in R)} object. 
 
+\pagebreak
 \subsection{Technical Issues}
 As with any data, there could be some level of work required to ``clean'' the data, or to make it presentable for analysis.  This cleanup effort will depend greatly upon the quality and source of the data, as well as the type of analysis and software.
 
-Some issues arise at the source of \fts{} data, and generally become typical problems solved through information technology. Often, they are simple matters of parsing a text file, rearranging rows and columns, or validating source data. Such rudimentary tasks, as well as more complex pre-analytical text formatting, are solved by scripting languages like Perl\index{Perl language} or Python\index{Python language}.
+Some issues arise at the source of \fts{} data, and generally become typical problems solved through information technology. Often, they are simple matters of parsing a text file, rearranging rows and columns, or validating source data. Such rudimentary tasks, as well as more complex pre-analytical text formatting, are solved by scripting languages like Perl\index{Perl Language} or Python\index{Python Language}.
 
 Be aware that some \fts{} data may have the most recent data first, yet your graphics and numerical analysis expects oldest data first. In this case, you simply need to reverse the order of the observations in the data set.
 

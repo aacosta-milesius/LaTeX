@@ -1,6 +1,6 @@
 \section{Introduction}
 \paragraph{Primary Text Reading.} \citeA[chap. 1]{tsay2005aft}\index{Tsay, Ruey}
-\subsection{What is \fts{} analysis?}\index{time series!definition}
+\subsection{What is \fts{} analysis?}\index{Time Series!definition}
 In general, a time series is a sequence of data points, usually measured at successive times, spaced at specific intervals. Time series analysis comprises methods that seek to understand the context of the data points to answer questions such as, ``What is this series telling me about whatever is generating this series?'', or to make \emph{forecasts} to predict future data points.
 \marginpar{\begin{small}\begin{flushleft}\textcolor{blue}{Much of time series analysis is predicting future outcomes.}\end{flushleft}\end{small}}
 Time series forecasting is the use of a model to forecast future events based on known past events: to forecast future data points before they occur. A good example might be forecasting a price of a share of stock based on its past performance.
@@ -9,9 +9,9 @@ Financial time series analysis is concerned with asset valuation and volatility 
 
 There are three major outcomes of time series analysis, graphical analysis, autocorrelation, and trend behavior. We will briefly discuss how each is explored.
 
-\paragraph{Graphical analysis.} When we view a time series in the form of time series plot, we may observe peaks and valleys. It may become apparent that a trend has developed by looking at the rising and falling of the line. Methods that analyze time series data graphically comprise \index{technical analysis}\emph{technical analysis} and a \index{exploratory data analysis}\emph{Exploratory Data Analysis}.
+\paragraph{Graphical analysis.} When we view a time series in the form of time series plot, we may observe peaks and valleys. It may become apparent that a trend has developed by looking at the rising and falling of the line. Methods that analyze time series data graphically comprise \index{Technical Analysis}\emph{technical analysis} and a \index{Exploratory Data Analysis}\emph{Exploratory Data Analysis}.
 
-\paragraph{Autocorrelation.}\index{autocorrelation} We may want to measure the extend to which data points seem to rely upon previous points, or how random they seem to be. This type of analysis applies autocorrelation studies.
+\paragraph{Autocorrelation.}\index{Autocorrelation} We may want to measure the extend to which data points seem to rely upon previous points, or how random they seem to be. This type of analysis applies autocorrelation studies.
 
 \paragraph{Trend behavior.} Some \fts{} exhibit trends which can be examined numerically. They may have some seasonal pattern, such that, for instance, their level will rise in summer and decline in winter.
 
@@ -57,10 +57,10 @@ The cumulative distribution \eqref{eq:cdf} is depicted in Figure~\ref{figure:cdf
 
 A great deal of statistical analysis comes from the normal distribution. Being able to calculate the values of specific ranges in the distribution is essential to understanding descriptive statistics.
 
-\subsubsection{Sampling and Validity}\index{sampling}\index{sampling!validity}
+\subsubsection{Sampling and Validity}\index{Sampling}\index{Sampling!Validity}
 Sampling is the process of selecting units (\textit{e.g.}, people, organizations) from a population of interest so that by studying the sample we may fairly generalize our results back to the population from which they were chosen. We begin by covering some of the key terms in sampling like ``population'' and ``sampling frame.'' Then, because some types of sampling rely upon quantitative models, we talk about some of the statistical terms used in sampling.
 
-\paragraph{Random Sample.} \index{sampling!random}\index{recursion|see{recursion}}
+\paragraph{Random Sample.}\index{Sampling!Random}\index{Recursion|see{Recursion}}
 Since it is not practical or even possible in many cases, to gather all data from a population, gathering a sample is preferred. However, the method by which a sample is chosen is very important and will affect the results of analysis. One of the easiest sampling methods is creating a \emph{random sample}.
 
 How do we select a simple random sample? Assume that we are doing some research in equity analysis using a specific price forecasting method. First, we have to get the sampling frame organized. To accomplish this, we have to define the universe of stocks that are eligible for study. Next, we actually draw the sample using some random number assigned to each stock. If we are studying 100 stocks in our sample of perhaps 5,000 stocks. Then, the sampling fraction is $f = n/N = 100/5000 = .02$ or 2\%. To actually draw the sample, we have several options. We could print the list of 5,000 stocks, tear them into separate strips, put the strips in a box, and pull out the first 100. This mechanical procedure is tedious and the quality of the sample would depend on how thoroughly we mixed them up and how randomly we reached in.
@@ -70,9 +70,11 @@ A better procedure would be to use a random number generator that picks a number
 \ecaption{Generating 5,000 Random Integers}
 \texttt{my\_sample=floor(5000*rand(1,100));} \\
 
-However, this method does \emph{not} guarantee that the numbers generated will be unique, but it is a start. Simple random sampling is simple to accomplish and is easy to explain to others. Because simple random sampling is a fair way to select a sample, it is reasonable to generalize the results from the sample back to the population. Simple random sampling is not the most statistically efficient method of sampling and we may, just because of the luck of the draw, not get good representation of subgroups in a population. To deal with these issues, we have to turn to other sampling methods.
+However, this method does \emph{not} guarantee that the numbers generated will be unique, but it is a start.
 
-\paragraph{Systematic Sample.} \index{sampling!systematic}
+Simple random sampling is simple to accomplish and is easy to explain to others. Because simple random sampling is a fair way to select a sample, it is reasonable to generalize the results from the sample back to the population. Simple random sampling is not the most statistically efficient method of sampling and we may, just because of the luck of the draw, not get good representation of subgroups in a population. To deal with these issues, we have to turn to other sampling methods.
+
+\paragraph{Systematic Sample.} \index{Sampling!Systematic}
 Another random selection method is to pick every $k$th item in a population.
 Here are the steps to achieve a systematic random sample,
 \begin{enumerate}
@@ -87,7 +89,7 @@ All of this will be much clearer with an example. Assume that we have a populati
 
 For this to work, it is essential that the units in the population are randomly ordered, at least with respect to the characteristics we are measuring. Systematic random sampling is fairly easy to do. We only have to select a single random number to start things off. It may also be more precise when selecting the sample size $n$ than a simple random sampling, which uses a random number generator that is not guaranteed to be unique.
 
-\paragraph{Stratified Sample.} \index{sampling!stratified}
+\paragraph{Stratified Sample.} \index{Sampling!Stratified}
 This is a sample within a sample because a sample is drawn, and then a sample from within that is drawn. Stratified random sampling, also sometimes called \emph{proportional} or \emph{quota random sampling}, involves dividing our population into homogeneous subgroups and then taking a simple random sample in each subgroup.
 
 In more formal terms, we divide the population into non-overlapping groups (\textit{i.e.}, strata) $N_1, N_2, N_3, \ldots, N_i$, such that $N_1 + N_2 + N_3 + \cdots + N_i = N$. Then we select a simple random sample of $f = n/N$ in each strata.
@@ -119,20 +121,20 @@ If we stratify, we can do better. First, let us determine how many stocks we wan
    \label{tab:strat-sample}
 \end{table}
 
-\paragraph{Convenience Sample.}\index{sampling!convenience}
+\paragraph{Convenience Sample.}\index{Sampling!Convenience}
 A convenience sample is one where the items sampled from the population are chosen for their easy access. For instance, a consumer survey conducted by asking the first 100 people who walk into a particular bank one morning is a convenience sample. Those not going to that bank on that morning are not part of the sample. This might be an important issue, or it might not be, depending upon the purpose of the survey. Choosing 100 stocks for analysis based upon the fact that the analyst has heard of them is also a convenience sample because it ignores the perhaps thousands of stocks unknown to the analyst.
 
-\paragraph{Validity.}\index{validity!external}
+\paragraph{Validity.}\index{Validity!External}
 \emph{External validity} is related to generalizing.
-\margincomment{Validity refers to the approximate truth of propositions, inferences, or conclusions}
+\marginpar{\begin{small}\begin{flushleft}\textcolor{blue}{Validity refers to the approximate truth of propositions, inferences, or conclusions}\end{flushleft}\end{small}}
 External validity refers to the approximate truth of conclusions that involve generalizations. In other words, external validity is the degree to which the conclusions in a study would hold for other persons in other places and at other times.
 
-In science there are two major approaches to how we provide evidence for a generalization. The first approach is the \emph{Sampling Model}.\index{validity!sampling}
+In science there are two major approaches to how we provide evidence for a generalization. The first approach is the \emph{Sampling Model}.\index{Validity!Sampling}
 In the sampling model, we start by identifying the population to generalize to. Then, we draw a fair sample from that population and conduct research with the sample. Finally, because the sample is representative of the population, one can automatically generalize results back to the population. However, there are several problems with this approach.
 
 First, perhaps we do not know at the time of the study who we might ultimately like to generalize to. Second, we may not be easily able to draw a fair or representative sample. Third, it is impossible to sample across all times that we might like to generalize to (like next year).
 
-The second approach to generalizing is the \emph{Proximal Similarity Model}.\index{validity!proximal similarity}
+The second approach to generalizing is the \emph{Proximal Similarity Model}.\index{Validity!Proximal Similarity}
 Under this model, we begin by thinking about different generalizability contexts and developing a theory about which contexts are more like our study and which are less so. For instance, we might imagine several settings that have people who are more similar to the people in our study or people who are less similar. This also holds for times and places.
 
 When we place different contexts in terms of their relative similarities, we can call this implicit theoretical a gradient of similarity. Once we have developed this proximal similarity framework, we are able to generalize. How? We conclude that we can generalize the results of our study to other persons, places or times that are \emph{more like} (that is, more proximally similar) to our study. Notice that here, we can never generalize with certainty -- it is always a question of more or less similar.
@@ -143,8 +145,8 @@ A threat to external validity is an explanation of how we might be wrong in maki
 Our critics could argue that the results of our study are due to the unusual type of people who were in the study. Or, they could argue that it might only work because of the unusual place we did the study in (perhaps we did our educational study in a college town with lots of high-achieving educationally-oriented students). Or, one might suggest that we did our study in a peculiar time. For instance, if we did an interest rate study the week after the Federal Reserve issues the well-publicized results of the latest rate change, we might get different results than if we had done it the week before.
 
 \paragraph{Improving External Validity.}
-\margincomment[red]{External validity (\emph{ability to generalize}) will be stronger the more we replicate our study.}
 How can we improve external validity? One way, based on the sampling model, suggests that we do a good job of drawing a sample from a population. For instance, we should use random selection, if possible, rather than a \emph{nonrandom} procedure.
+\marginpar{\begin{small}\begin{flushleft}\textcolor{blue}{External validity (ability to generalize) will be stronger the more we replicate our study.}\end{flushleft}\end{small}}
 
 A second approach would be to use the theory of proximal similarity more effectively. How? Perhaps we could do a better job of describing the ways our contexts and others differ, providing lots of data about the degree of similarity between various groups of people, places, and even times. We might even be able to map out the degree of proximal similarity among various contexts with a methodology like concept mapping. Perhaps the best approach to criticisms of generalizations is simply to show them that they are wrong -- do the study in a variety of places, with different people and at different times.
 
@@ -161,18 +163,17 @@ Most of the major inferential statistics come from a general family of statistic
 
 The purpose of these statistical tests is to conduct an experiment. Is a certain procedure effective in forecasting rates? Is there a significant difference between two samples?
 
-\subsection{Statistical Inference}\index{statistical inference}
-When we make some conclusion from a data sample we obtained, we draw an inference about a population based on some statistical inference method.
-\margincomment[red]{A statistic is drawn from a sample. A parameter is contained in the population.}
-We may be attempting to predict one of the following,
+\subsection{Statistical Inference}\index{Statistical Inference}
+When we make some conclusion from a data sample we obtained, we draw an inference about a population based on some statistical inference method. We may be attempting to predict one of the following,
 \begin{itemize}
-\item point estimate: \index{point estimation} we are trying to determine a specific number
-\item interval estimate:\index{interval estimation} we are tying to obtain a \emph{confidence interval}
-\item hypothesis test:\index{hypothesis test}  we run a statistical significance test to determine if a sample belongs in the population
+\item point estimate: \index{Point Estimation} we are trying to determine a specific number
+\item interval estimate:\index{Interval Estimation} we are tying to obtain a \emph{confidence interval}
+\item hypothesis test:\index{Hypothesis Test}  we run a statistical significance test to determine if a sample belongs in the population
 \end{itemize}
 
-\subsubsection{Point Estimation}\index{point etimation}
+\subsubsection{Point Estimation}\index{Point Estimation}
 Point estimation involves the use of sample data to calculate a single value (known as a \emph{statistic}) which is to serve as a ``best guess'' for an unknown (fixed or random) population \emph{parameter}.
+\marginpar{\begin{small}\begin{flushleft}\textcolor{red}{A statistic is drawn from a sample. \\ A parameter is contained in the population.}\end{flushleft}\end{small}}
 One of the best known methods of point estimation is linear regression using the method of ordinary least squares. For example, Figure~\ref{figure:pt-est} is a linear regression through a scatterplot.
 
 In most types of regression analysis, linear or otherwise, we are getting a point estimate through a plane, or more simply, a line that predicts points along the line.
@@ -183,28 +184,28 @@ In most types of regression analysis, linear or otherwise, we are getting a poin
   \label{figure:pt-est}
 \end{figure}
 
-\subsubsection{Interval Estimation}\index{interval estimation}
+\subsubsection{Interval Estimation}\index{Interval Estimation}
 Interval estimation is the use of sample data to calculate an interval of probable values of an unknown population parameter. The most prevalent forms of interval estimation are \emph{confidence intervals}. Because samples are taken from a population with a distribution, such as a normal distribution (Figure~\ref{figure:pdf}), it is possible that the sample does not accurately describe the population. If a point estimate is taken from one of the two tails of the distribution, it certainly would not represent the mean of the population.
 
 An interval estimate provides some information about the accuracy of the sample and it represents a range of likely values. For instance, we can obtain a 95\% confidence interval, meaning that we have a 95\% confidence that our population mean $\mu$ is contained in our interval. To create the interval we calculate,
 \begin{eqnarray}
-P \big(-z< \frac{\bar{Y}-\mu}{1/\sqrt{n}}<z \big)&=&.95 ; \quad z= 1.96 \label{eq:conf-int} \\
-P \big(-1.96< \frac{\bar{Y}-\mu}{1/\sqrt{n}}<1.96 \big)&=&.95, \notag
+P \big(-z< \frac{\bar{Y}-\mu}{1/\sqrt{n}}<z \big)&=&.95 ; z= 1.96 \label{eq:conf-int} \\
+P \big(-1.96< \frac{\bar{Y}-\mu}{1/\sqrt{n}}<1.96 \big)&=&.95 \notag
 \end{eqnarray}
-which gives us an interval estimate of $\Big[\bar{y}-1.96/\sqrt{n},\bar{y}+1.96/\sqrt{n} \Big]$, or $\bar{y} \pm 1.96/\sqrt{n}$.
+which gives us an interval estimate of $[\bar{y}-1.96/\sqrt{n},\bar{y}+1.96/\sqrt{n}]$, or $\bar{y} \pm 1.96/\sqrt{n}$.
 
-\subsubsection{Hypothesis Testing}\index{hypothesis test}\label{hyp-test}
+\subsubsection{Hypothesis Testing}\index{Hypothesis Test}\label{hyp-test}
 A hypothesis test is a method of making statistical decisions about experimental data that answers the question of how well the findings fit the probability that chance factors alone might be responsible. This is done by asking a hypothetical question and performing a test that compares a sample to its population.
 
 To set up a hypothesis test, we begin with a \emph{null hypothesis}. For example, we want to test a cereal-filling machine at a factory \cite[pp. 332--358]{levine-2004sme}. Our test is to determine if the machine is pouring out the expected weight of 368 grams into each box of cereal.
 
 We have a sample of 25 cereal boxes, and we want to test if the machine is filling properly based on the average weight from our sample. To do so, we must state a null hypothesis,
 \[
-H_0 : \mu=368,\index{null hypothesis}\index{H0@$H_0$|see{null hypothesis}}
+H_0 : \mu=368,\index{Null Hypothesis}\index{H0@$H_0$|see{Null Hypothesis}}
 \]
 and an alternative hypothesis as,
 \[
-H_1 : \mu \ne 368. \index{alternative hypothesis}\index{H1@$H_1$|see{alternative hypothesis}}
+H_1 : \mu \ne 368. \index{Alternative Hypothesis}\index{H1@$H_1$|see{Alternative Hypothesis}}
 \]
 
 The cereal in the 25 boxes is weighed, and its average (\emph{mean} weight) is found to be 372.5 grams. We know that, on average, the machine has poured too much cereal, some boxes may have too much, others too little. The real question is, ``Is 372.5 grams per box \emph{close enough} to consider the cereal machine to be working?''
@@ -213,7 +214,7 @@ Before we can say what is close enough, we need to know how much variance to exp
 
 \paragraph{Hypothesis Errors.}There are two kinds of hypothesis errors we can make,
 \begin{description}
-\item[Type I Error] This occurs when rejecting a null hypothesis that should not have been rejected. The probability of a Type I error is defined as the \emph{level of significance}\index{level of significance} which uses the symbol $\alpha$.\index{alpha@$\alpha$ (alpha)|see{level of significance}}
+\item[Type I Error] This occurs when rejecting a null hypothesis that should not have been rejected. The probability of a Type I error is defined as the \emph{level of significance}\index{Level of Significance} which uses the symbol $\alpha$.\index{alpha@$\alpha$ (alpha)|see{Level of Significance}}
 \item[Type II Error] This occurs when not rejecting the null hypothesis when we should have. The probability of a Type II error is denoted by the symbol $\beta$.\index{beta@$\beta$ (beta)!in hypothesis}
 \end{description}
 
@@ -262,14 +263,16 @@ Now that we know where the sample mean should lie within the distribution, we ne
 \boxed{\quad z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}. \quad}
 \label{eq:z-test}
 \end{equation}
-We have the numbers we need to proceed, $\bar{X}=372.5, \mu=368, \sigma=15, n=25$, and we can use \eqref{eq:z-test} to generate a $z$-test statistic,\index{z@$z$-test statistic}
+We have the numbers we need to proceed, $\bar{X}=372.5, \mu=368, \sigma=15, n=25$.
+
+We can use \eqref{eq:z-test} to generate a $z$-test statistic,\index{Z@$Z$-Test Statistic}
 \[
 z = \frac{372.5 - 368}{15/\sqrt{25}} = 1.5.
 \]
 
-Since our $z$-test statistic is within the region of non-rejection ($-1.96 < z < 1.96$), we state that \emph{there is insufficient evidence to claim that our sample mean is different from the population mean}. The difference in the weight of the cereal is ``close enough.''
+Since our $z$-test statistic is within the region of non-rejection ($-1.96 < z < 1.96$), we state that there is insufficient evidence to claim that our sample mean is different from the population mean. The difference in the weight of the cereal is ``close enough.''
 
-\subsection{Linear Algebra}\label{linear-algebra}\index{matrix math|see{linear algebra}}\index{linear algebra}\index{MATLAB}\index{R language}
+\subsection{Linear Algebra}\index{Matrix Math|see{Linear Algebra}}\index{Linear Algebra}\index{MATLAB}\index{R language}
 To perform matrix operations, We will be using MATLAB, and R, which allow us to perform matrix multiplication and other related operations, but it is important to remember is how to multiply two matrices.
 \margincomment{The size of a matrix is described by number of rows $\times$ columns}
 For example, matrix $\mathbf{A} \times \mathbf{B}$ where,
@@ -324,10 +327,10 @@ The multiplication in \eqref{eq:matmult} and \eqref{eq:matmultnum} is allowed be
 \]
 requires that $n=p$. The resulting matrix will be of size $[m \times q]$.
 
-\margincomment[red]{The law of commutativity does \emph{not} apply to matrices.}
 It is important to note that the order the two matrices is multiplied is very important. The result will most likely be very different, if it can be computed at all.
+\margincomment[red]{The law of commutativity does \emph{not} apply to matrices.}
 \[
-\boxed{\quad \mathbf{AB} \neq \mathbf{BA} \quad}
+\mathbf{AB} \neq \mathbf{BA}
 \]
 
 Often, some calculations require a matrix to be \emph{transposed}. This is simply a rotation of columns to rows, as in the example,
@@ -346,7 +349,7 @@ Often, some calculations require a matrix to be \emph{transposed}. This is simpl
 \end{eqnarray}
 
 Let us examine how MATLAB evaluates \eqref{eq:matmult}. A data structure, such as an array or matrix, is enclosed within brackets. The data elements may be comma-separated or separated by a space. A semicolon delimits a new row.
-\ecaption{Matrix Multiplication in MATLAB}
+\ecaption{Matrix Multiplication}
 \begin{verbatim}
     A=[1 2 3; 4 5 6];
     B=[10 20; 30 40; 50 60];
@@ -357,18 +360,3 @@ Let us examine how MATLAB evaluates \eqref{eq:matmult}. A data structure, such a
        490   640
 \end{verbatim}
 Compare \eqref{eq:matmult} to the MATLAB syntax above to see how the expression is coded. The semicolon at the end of a line suppresses printing of an expression to the Command Window, but the values are displayed in the Workspace.
-
-Now, we will perform the same matrix multiplication using the R language.
-\index{R language}
-\ecaption{Matrix Multiplication in R}
-\begin{verbatim}
-    A<-matrix(c(1,4,2,5,3,6),2,3)
-    B<-matrix(c(10,30,50,20,40,60),3,2)
-    A %*% B
-    
-         [,1] [,2]
-    [1,]  220  280
-    [2,]  490  640
-\end{verbatim}
-One difference you may notice in the syntax is that MATLAB accepts matrix elements row-by-row, but R accepts them by columns, and we specify the number of rows and columns. Also, R requires the \texttt{\%*\%} operator for matrix multiplication. 
-

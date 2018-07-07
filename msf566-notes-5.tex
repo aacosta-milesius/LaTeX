@@ -1,13 +1,9 @@
 \section{Conditional Heteroskedastic Models}\label{Conditional Heteroskedastic}
 \paragraph{Primary Text Reading.} \citeA[chap. 3]{tsay2005aft}\index{Tsay, Ruey}
 
-\begin{quotation}
-\emph{(\ldots) skedacity refers to the volatility or wiggle of a time series, Heteroskedacity means that the wiggle itself tends to wiggle. Conditional means the wiggle of the wiggle depends on its own past wiggle. Generalized means that the wiggle of the wiggle can depend on its own past wiggle in all kinds of wiggledy ways} \cite[Kent Osband quoted in page 1]{ardia2008frm}.\index{Osband, Kent}
-\end{quotation}
-
 Up to this point, we have focused on modeling assets returns or forecasting their prices. When analyzing \fts{}, we may also want to analyze the \emph{volatility} or, the conditional standard deviation, of the asset. Since volatility is not directly experienced, we must find a substitute for it. We can look at an option pricing model that uses volatility as an input.
 
-The \emph{implied volatility}\index{implied volatility} of an option contract is the volatility implied by the market price of the option based on an option pricing model. It is the volatility that, given a particular pricing model, yields a theoretical value for the option equal to the current market price. Implied volatility, a forward-looking measure, differs from historical volatility because the latter is calculated from known past prices of a security.
+The \emph{implied volatility}\index{Implied volatility} of an option contract is the volatility implied by the market price of the option based on an option pricing model. It is the volatility that, given a particular pricing model, yields a theoretical value for the option equal to the current market price. Implied volatility, a forward-looking measure, differs from historical volatility because the latter is calculated from known past prices of a security.
 
 One model, which requires conditional volatility as one of its inputs, is the Black-Scholes option pricing model,\index{Black-Scholes option pricing model}
 \begin{subequations}
@@ -30,7 +26,7 @@ Similarly, if we have the option price, and all other inputs except the volatili
 \paragraph{Volatility.} It is a difficult task to measure volatility of an asset return. Although the volatility may exist in a continuous form, with no sudden jumps, it may remain low for a period and then shift upward. Depending upon the asset, and whether it rose or fell in price, a major price change in the underlying security may affect volatility differently. To be certain, volatility changes, and it can be rapid and difficult to observe directly.
 
 \margincomment[red]{Different volatility models make different assumptions about $\sigma^2_t$.}
-To measure volatility, we need to model the changes in variance $\sigma^2_t$ in the asset return time series. The various conditional heteroskedastic models differ in how this variance changes in time. The evolution of $\sigma^2_t$ is deterministic in some models, such as the GARCH model, yet \emph{stochastic volatility}\index{stochastic volatility model} models exist also.
+To measure volatility, we need to model the changes in variance $\sigma^2_t$ in the asset return time series. The various conditional heteroskedastic models differ in how this variance changes in time. The evolution of $\sigma^2_t$ is deterministic in some models, such as the GARCH model, yet \emph{stochastic volatility}\index{Stochastic Volatility model} models exist also.
 
 \subsection{Building a Volatility Model}
 The basic structure of volatility modeling is
@@ -67,11 +63,11 @@ F=\frac{(SSR_0-SSR_1)/m}{SSR_1/(T-2m-1)}.
 \]
 
 \subsubsection{ARCH Model}
-An \emph{autoregressive conditional heteroskedasticity} (ARCH) model\index{autoregressive conditional\\heteroskedasticity\\(ARCH) model} considers the variance of the current error term to be a function of the variances of the previous time period's error terms \cite{engle1982arch}.  ARCH relates the error variance to the square of a previous period's error. It is employed commonly in modeling financial time series that exhibit time-varying volatility clustering, which are periods of swings followed by periods of relative calm. The shock $a_t$ of an asset return is serially uncorrelated, but dependent; and the dependence can be described by a simple quadratic function of its lagged values.
+An \emph{autoregressive conditional heteroskedasticity} (ARCH) model\index{Autoregressive Conditional \\ Heteroskedasticity (ARCH) model} considers the variance of the current error term to be a function of the variances of the previous time period's error terms \cite{engle1982arch}.  ARCH relates the error variance to the square of a previous period's error. It is employed commonly in modeling financial time series that exhibit time-varying volatility clustering, which are periods of swings followed by periods of relative calm. The shock $a_t$ of an asset return is serially uncorrelated, but dependent; and the dependence can be described by a simple quadratic function of its lagged values.
 
 %TODO: Maybe show asset returns and squared series for ARCH effect.
 
-Specifically, let $\epsilon_t$  denote the returns (or return residuals, net of a mean process) and assume that $\epsilon_t=\sigma_t z_t$, where $z_t\sim iid~ N(0,1)$  \index{iid -- independent and\\identically distributed} and where the series $\sigma_t^2$  are modeled by
+Specifically, let $\epsilon_t$  denote the returns (or return residuals, net of a mean process) and assume that $\epsilon_t=\sigma_t z_t$, where $z_t\sim iid~ N(0,1)$  and where the series $\sigma_t^2$  are modeled by
 \[
 \sigma_t^2=\alpha_0+\alpha_1 \epsilon_{t-1}^2+\cdots+\alpha_q \epsilon_{t-q}^2 = \alpha_0 + \sum_{i=1}^q \alpha_{i} \epsilon_{t-i}^2 
 \]
@@ -95,8 +91,7 @@ The null hypothesis is that, in the absence of ARCH effects, we have $\alpha_i =
 %TODO: Test this code and expand on it.
 Using the R library \texttt{FinTS}\index{FinTS@\texttt{FinTS} (library in R)}\footnote{Rmetrics has many other excellent functions in the \texttt{fSeries} package \cite{fseries-R}. A description of the many packages available from Rmetrics is at \texttt{http://www.rmetrics.org/rmetricsPackages.htm} and are available on CRAN.}
 \cite{fints-R}, we can perform the Lagrange Multiplier (LM) test for autoregressive conditional heteroscedasticity (ARCH).
-\ecaption{ARCH Test using R library, \texttt{FinTS}}\index{R language} 
-\rpkg{FinTS}
+\ecaption{ARCH Test using R library, \texttt{FinTS}}
 \begin{verbatim}
 data(m.intc7303)
 intcLM <- ArchTest(log(1+as.numeric(m.intc7303)), lag=12)
@@ -105,7 +100,7 @@ intcLM <- ArchTest(log(1+as.numeric(m.intc7303)), lag=12)
 
 \paragraph{Drawbacks of ARCH.} The ARCH model assume that positive and negative shocks have the same effect on volatility because it depends on the square of the previous shocks. This is not realistic. The ARCH model is not very helpful in finding the source of variation within a \fts{}. Also, the model responds slower to large isolated shocks.
 
-\subsection{GARCH}\index{generalized autoregressive conditional\\ heteroskedasticity\\(GARCH) model}\label{garch}
+\subsection{GARCH}\index{Generalized Autoregressive Conditional\\Heteroskedasticity (GARCH) model}\label{garch}
 By comparison, ARCH models are simple, although the number of required parameters makes it difficult to calibrate. Next, we examine generalizations of ARCH to model volatility.
 If an ARMA model is assumed for the error variance, the model is a generalized autoregressive conditional heteroskedasticity model \cite{bollerslev1986garch}. In such a case, the GARCH($m, s$) model, where $m$ is the order of the GARCH terms $\sigma^2$ and $s$ is the order of the ARCH terms $\epsilon^2$, is given by
 \begin{eqnarray*}
@@ -119,7 +114,7 @@ a^2_t = \alpha_0 + \sum^{\max(m,s)}_{i=1} (\alpha_i + \beta_i) a^2_{t-i}+\eta_t
 \label{eq:garch}
 \end{equation}
 
-\subsubsection{GARCH($m, s$) Model Specification}\label{garch-spec}
+\subsubsection{GARCH($m, s$) Model Specification}
 The lag length $p$ of a GARCH process is established in three steps,
 \begin{enumerate}
 \item Estimate the best fitting AR($q$) model
@@ -141,12 +136,12 @@ Since volatility is not directly observable, testing and calibrating GARCH metho
 Forecasting with \eqref{eq:garch} can employ a similar method used when forecasting \eqref{eq:arma1-1}. Pursue the first parameter and seek the lowest AIC value, then hold that parameter constant while changing the second parameter. Sometimes, it may be helpful to go back and change the first parameter again after obtaining the second.
 
 We can use a few R functions from the \texttt{fArma} library \cite{farma-R}, \texttt{fGarch} library \cite{fgarch-R}, and the \texttt{fSeries} library \cite{fseries-R} to examine GARCH models. The fit is displayed in Figure~\ref{figure:conditional-sd}.
-\ecaption{GARCH Model Fitting in R}\index{R language} 
-\rpkg{fArma}\rpkg{fGarch}\rpkg{fSeries}
+\ecaption{GARCH Model Fitting in R}
 \begin{verbatim}
 spxm<-read.csv("SPX-M.csv", header=T)
 spxts<-ts(spxm$Adj.Close, start=c(1950,1), frequency=12)
 plot(spxts)
+
 spxG<-garchFit(~garch(1, 1), data = spxts)
 plot(spxG) # There are 13 different charts to choose from.
 spxG@title
@@ -176,7 +171,8 @@ Ultimately, after several iterations of changes in the log likelihood (``LLH''),
 \end{bmatrix}.
 \]
 
-We can examine the results graphically with 13 different types of graphs using \texttt{plot(spxG)}.  Using these graphs, and the statistics generated from the GARCH model, we can modify the parameter set $(m,s)$ for best fit.
+\pagebreak
+We can examine the results graphically with 13 different types of graphs using \texttt{plot(spxG)}.  Between this and the statistics generated from the GARCH model, we can modify the parameter set $(m,s)$ for best fit.
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -199,9 +195,9 @@ Make a plot selection (or 0 to exit):
 	\label{figure:conditional-sd}
 \end{figure}
 
-\subsubsection{Integrated GARCH Model}\index{integrated GARCH\\(IGARCH) model}
-When AR polynomial of \eqref{eq:garch} has a unit root, then we have an IGARCH model.
+\subsubsection{Integrated GARCH Model}\index{Integrated GARCH\\(IGARCH) model}
 \margincomment[red]{IGARCH is a unit-root GARCH model.}
+When AR polynomial of \eqref{eq:garch} has a unit root, then we have an IGARCH model.
 The IGARCH(1,1) model
 \begin{equation}
 a_t = \sigma_t \epsilon_t, \quad \sigma^2_t = \alpha_0 + \beta_1 \sigma^2_{t-1} + (1-\beta_1)a^2_{t-1},
@@ -209,7 +205,7 @@ a_t = \sigma_t \epsilon_t, \quad \sigma^2_t = \alpha_0 + \beta_1 \sigma^2_{t-1} 
 \end{equation}
 where $\{\epsilon_t\}$ is $1>\beta_1>0$. An IGARCH(1,1) model can be estimated by exponential smoothing methods when $\alpha_0=0$.
 
-\subsubsection{GARCH in Mean Model}\index{GARCH in mean\\(GARCH-M) model}
+\subsubsection{GARCH in Mean Model}\index{GARCH in Mean\\(GARCH-M) model}
 GARCH-M is a ``GARCH in the mean'' model because it adds the heteroskedastic term directly into the equation. It can be written as
 \begin{eqnarray}
 r_t &=& \mu + c\sigma^2_t + a_t, \quad a_t=\sigma_t \epsilon_t, \notag \\
@@ -218,12 +214,12 @@ r_t &=& \mu + c\sigma^2_t + a_t, \quad a_t=\sigma_t \epsilon_t, \notag \\
 \end{eqnarray}
 where $\mu$ and $c$ are constants. The $c$ parameter is the \emph{risk premium parameter}. A $c>0$ indicates that the return has a positive relationship to its volatility.
 
-\subsubsection{Exponential GARCH Model}\index{exponential GARCH\\(EGARCH) model}
+\subsubsection{Exponential GARCH Model}\index{Exponential GARCH\\(EGARCH) model}
 EGARCH was created to allow for asymmetric effects in asset returns. Positive and negative asset returns may not be equally symmetric, a problem not addressed by previous models. We begin with the weighted innovation
 \[
 g(\epsilon_t) = \theta \epsilon_t + \gamma \left[ |\epsilon_t| - E(|\epsilon_t|) \right],
 \]
-where $\theta$ and $\gamma$ are real constants. Both $\epsilon_t$ and $|\epsilon_t|-E(g(|\epsilon_t|)$ are zero-mean ($E[g(\epsilon_t)]$) iid\index{iid -- independent and\\identically distributed} sequences with continuous distributions. A better way to see the asymmetry is
+where $\theta$ and $\gamma$ are real constants. Both $\epsilon_t$ and $|\epsilon_t|-E(g(|\epsilon_t|)$ are zero-mean ($E[g(\epsilon_t)]$) iid sequences with continuous distributions. A better way to see the asymmetry is
 \[
 g(\epsilon_t) =
 	\begin{cases}
@@ -237,7 +233,7 @@ a_t = \sigma_t \epsilon_t, \quad \ln(\sigma^2_t)=\alpha_0 +
 \frac{1+\beta_1 B+ \cdots +\beta_{s-1} B^{s-1}}{1-\alpha_1 B -\cdots -\alpha_m B^m} g(\epsilon_t - 1),
 \label{eq:egarch}
 \end{equation}
-where $\alpha_0$ is a constant, $B$ is the \emph{back-shift} or lag operator such that $Bg(\epsilon_t)=g(\epsilon_{t-1})$, and $1+\beta_1 B +\cdots +\beta_{s-1} B^{s-1}$ and $1-\alpha_1 B -\cdots -\alpha_m B^m$ are polynomials with zeros outside the unit circle\footnote{To be \emph{outside the unit circle} means to have absolute values of the zeros with values greater than one.} and have no common factors. The evolution of the conditional variance of $a_t$ is still contained in \eqref{eq:egarch} by using ARMA parameterization.
+where $\alpha_0$ is a constant, $B$ is the \emph{back-shift} or lag operator such that $Bg(\epsilon_t)=g(\epsilon_{t-1})$, and $1+\beta_1 B +\cdots +\beta_{s-1} B^{s-1}$ and $1-\alpha_1 B -\cdots -\alpha_m B^m$ are polynomials with zeros outside the unit circle\footnote{To be \emph{outside the unit circle} means to have absolute values of the zeros greater than 1.} and have no common factors. The evolution of the conditional variance of $a_t$ is still contained in \eqref{eq:egarch} by using ARMA parameterization.
 
 \paragraph{Alternative EGARCH Model.} An alternative form for EGARCH($m,s$) model is
 \begin{equation}
@@ -252,13 +248,13 @@ Notice in \eqref{eq:egarch-alt} that,
 \end{itemize}
 where $\epsilon_{t-i}=a_{t-i}/\sigma_{t-i}$. The leverage effect of $a_{t-i}$ is the $\gamma_i$ parameter.
 
-\subsubsection{Conditional Heteroskedasticity (CHARMA) Model}\index{conditional heteroskedasticity\\(CHARMA) model}
+\subsubsection{Conditional Heteroskedasticity (CHARMA) Model}\index{Conditional Heteroskedasticity\\(CHARMA) model}
 The next model is CHARMA, which uses random coefficients to produce conditional heteroskedasticity. A CHARMA model is defined as
 \begin{equation}
 r_t = \mu_t + a_t, \quad a_t=\delta_{1t} a_{t-1} + \delta_{2t} a_{t-2} +\cdots +\delta_{mt} a_{t-m} + \eta_t,
 \label{eq:charma}
 \end{equation}
-where $\{\eta_t\}$ is a Gaussian (normally distributed) white noise series with mean zero and variance $\sigma^2_{\eta}, \{\delta_t\}=\{(\delta_{1t}, \ldots,a_{mt})'\}$ is a sequence of iid\index{iid -- independent and\\identically distributed} random vectors with mean zero and non-negative definite covariance matrix $\mathbf{\Omega}$, and $\{\delta_t\}$ is independent of $\{\eta_t\}$.
+where $\{\eta_t\}$ is a Gaussian (normally distributed) white noise series with mean zero and variance $\sigma^2_{\eta}, \{\delta_t\}=\{(\delta_{1t}, \ldots,a_{mt})'\}$ is a sequence of iid random vectors with mean zero and non-negative definite covariance matrix $\mathbf{\Omega}$, and $\{\delta_t\}$ is independent of $\{\eta_t\}$.
 
 The conditional variance of at of the CHARMA model \eqref{eq:charma} is
 \begin{eqnarray}
@@ -266,7 +262,7 @@ The conditional variance of at of the CHARMA model \eqref{eq:charma} is
 &=& \sigma^2_t + (a, \ldots, a)\mathbf{\Omega}(a, \ldots, a).
 \end{eqnarray}
 
-\subsection{Stochastic Volatility Model}\index{stochastic volatility model}
+\subsection{Stochastic Volatility Model}\index{Stochastic Volatility model}
 If we model an underlying security's volatility as a random process, which is governed by state variables such as the price level of a security, there is a tendency of volatility to revert to some long-run mean value, and the variance of the volatility process itself.
 
 Stochastic volatility models are one approach to resolve a shortcoming of some option pricing models that assume a fixed volatility during the life of the option contract. Because these option pricing models assume that the underlying volatility is constant over the life of the derivative, and unaffected by the changes in the price level of the underlying, they often misprice the option value. By assuming that the volatility of the underlying price is a stochastic process rather than a constant, it becomes possible to model derivatives more 
@@ -291,7 +287,7 @@ d \nu_t = \theta(\omega - \nu_t )dt + \xi \nu_t dB_t .
 All stochastic volatility models have stochastic second moments (variance), but not all models that have stochastic second moments are called stochastic volatility models. Although stochastic volatility and GARCH are often presented as competing models, GARCH may help explain changes in volatility.
 
 Both the ARCH/GARCH and stochastic volatility models derive their randomness 
-from a white noise process. The difference is that an ARCH or a GARCH process depends 
+from a white noise process. The difference is that an ARCH/GARCH process depends 
 on just one white noise $W$. That white noise directly determines innovations in the ARCH/GARCH process while also indirectly determining innovations in its second moments. Despite the conventional description of \eqref{eq:brownian-motion}, stochastic volatility models generally depend on two white noise series, $V$ and $W$.
 
 \paragraph{Heston model.} Another stochastic volatility model used for describing the evolution of the volatility of an underlying asset is the \emph{Heston model}\index{Heston model}. It assumes that the volatility of the asset is not constant, nor even deterministic, but follows a random process. Assuming that the asset price $S_t$ is determined by a stochastic process,

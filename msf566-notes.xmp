@@ -1,0 +1,21 @@
+\contentsline {example}{Generating 5,000 Random Integers}{3}
+\contentsline {example}{Obtaining Critical Value}{10}
+\contentsline {example}{Matrix Multiplication}{11}
+\contentsline {example}{Normal Probability Density Function in MATLAB}{13}
+\contentsline {example}{Using MATLAB to Use Excel Workbook Data}{14}
+\contentsline {example}{Loading data from a website in R}{14}
+\contentsline {example}{Loading single-column text file in MATLAB}{15}
+\contentsline {example}{Loading multiple-column tab-delimited text file in MATLAB}{16}
+\contentsline {example}{Loading multiple-column comma-delimited text file in MATLAB}{16}
+\contentsline {example}{Loading multiple-column tab-delimited text file in R}{16}
+\contentsline {example}{Loading multiple-column comma-delimited text file in R}{17}
+\contentsline {example}{Moving Average Function in MATLAB}{18}
+\contentsline {example}{Moving Average Function in R}{19}
+\contentsline {example}{White Noise in R}{30}
+\contentsline {example}{Examining GNP Changes and ACF function in R}{34}
+\contentsline {example}{Testing ARIMA Models in R}{39}
+\contentsline {example}{Time Series Decomposition in R}{39}
+\contentsline {example}{Time Series Regression in MATLAB}{40}
+\contentsline {example}{ARCH Test using R library, \texttt {FinTS}}{46}
+\contentsline {example}{GARCH Model Fitting in R}{48}
+\contentsline {example}{Wiener process in R}{58}

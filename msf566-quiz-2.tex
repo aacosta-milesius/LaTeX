@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+\usepackage{setspace,amssymb,latexsym,amsmath,amscd,epsfig,amsthm}
+\graphicspath{{./images/}}
+
+\renewcommand{\labelenumi}{\Alph{enumi}.}
+
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=6.3in
+\topmargin=-0.5in
+%\textheight=9in
+
+\parindent=0in
+%\pagestyle{empty}
+
+\input{testpoints}
+\begin{document}
+
+\title{MSF 566 - Financial Time Series Analysis \\ Fall 2008 -- Quiz 2}
+\date{}
+\maketitle
+
+{Name:} {\underline {\hspace{4.5in}}}
+\vspace{1pc}
+
+%%%(modify rules, time, points as appropriate)
+%Show all work clearly and in order, and circle your final answers.  Justify your answers algebraically whenever possible; when you do use your calculator, sketch all relevant graphs and write down all relevant mathematics.
+You have 30 minutes to take this 20 point quiz.
+% problem
+\begin{problem}{20}
+\raggedright{Looking at Figure~\ref{figure:acf}, answer the following,}\linebreak
+
+\begin{figure}[ht]  \centering  \includegraphics[scale=.45]{quiz-acf}  \caption{Autocorrelation and Lag Data}  \label{figure:acf}\end{figure}\end{problem}
+
+\begin{enumerate}
+\item Is there evidence of drift in this time series? Explain your answer.
+\item Is there any level of mean reversion?
+\item What sort of autocorrelation does this appear to have (if any)?
+\item What type of moving average(s) would help your analysis?
+\end{enumerate}
+\thispagestyle{empty}
+
+\end{document}

@@ -1,5 +1,5 @@
 \section{Nonlinear Models}
-\paragraph{Primary Text Reading.} \citeA[chap. 4]{tsay2005aft}\index{Tsay, Ruey} and, \citeA{franses2000nlts}
+\paragraph{Primary Text Reading.} \citeA[chap. 4]{tsay2005aft}\index{Tsay, Ruey} and \citeA{franses2000nlts}
 \subsection{Simple Nonlinear Models}
 
 Nonlinear data exists in \fts{}, especially in volatility and high-frequency data. We focus now on simple nonlinear models and neural networks. 
@@ -13,15 +13,15 @@ where $p,q,m,$ and $s$ are non-negative integers.
 
 Some properties of bilinear models allow the modeling of nonlinear phenomenon with a minimum of parameters. 
 
-\subsubsection{Threshold Autoregressive Model}\label{tar-model}\index{threshold autoregressive\\(TAR) model} Adding some asymmetry to \eqref{eq:bilinear}, we have the threshold autoregressive model, which is a piecewise linear model in the threshold space. For example, a 2-regime AR(1) model 
+\subsubsection{Threshold Autoregressive Model}\index{Threshold Autoregressive\\(TAR) Model} Adding some asymmetry to \eqref{eq:bilinear}, we have the threshold autoregressive model, which is a piecewise linear model in the threshold space. For example, a 2-regime AR(1) model 
 \[
 x_t =
 \begin{cases}
 -1.5x_{t-1} + a_t, &\text{if $x_{t-1}<0$,} \\
-\phantom{-}0.5x_{t-1} + a_t, &\text{if $x_{t-1} \ge 0$,}
+0.5x_{t-1} + a_t, &\text{if $x_{t-1} \ge 0$,}
 \end{cases}
 \]
-where the $a_{t}$'s are iid\index{iid -- independent and\\identically distributed} $N(0, 1)$. 
+where the $a_{t}$'s are iid $N(0, 1)$. 
 
 Here the delay is 1 time period, $x_{t-1}$ is the threshold variable, and 
 the threshold is 0. The threshold divides the $x_{t-1}$ space into two 
@@ -58,7 +58,7 @@ There may be times when obtaining adequate information about the distribution wi
 \margincomment{Kernel density estimators \emph{discover} the data's distribution.}
 A major element of nonparametric methods is \emph{smoothing}. To do this, we need a density estimator, which is the construction of an estimate, based on observed data, of an unobservable underlying probability density function. The unobservable density function is thought of as the density according to which a large population is distributed; the data are usually thought of as a random sample from that population.
 
-Using MATLAB functions, kernel density estimation is implemented through the \texttt{ksdensity}\index{ksdensity@\texttt{ksdensity} (in MATLAB)} function. The R language can perform this estimation using \texttt{density}\index{density@\texttt{density} (in R)} function and the \texttt{kde2d} function, for two-dimensional kernel density estimation.
+In MATLAB, kernel density estimation is implemented through the \texttt{ksdensity} function. The R language can perform this estimation using \texttt{density} function and the \texttt{kde2d} function, for two-dimensional kernel density estimation.
 
 \paragraph{Kernel Regression.} Kernel regression is a non-parametric method to estimate the conditional expectation of a random variable. Its objective is to find a non-linear relationship between two random variables $x$ and $y$, such that
 \[
@@ -73,8 +73,8 @@ A common method is the Nadaraya-Watson kernel regression\index{Nadaraya-Watson k
 \widehat{m}(x)=\frac{\sum_{t=1}^T K_h(x-x_t)y_t }{\sum_{t=1}^T K_h(x-x_t)}.
 \]
 
-\subsubsection{Neural Networks}\index{neural networks}
-Neural networks are non-linear statistical data modeling tools, often used to model complex relationships between inputs and outputs or to find meaningful patterns in data. Because of this, a neural network is a semi-parametric approach to data analysis. Neural networks learn by example. The analyst gathers representative data, and then invokes training algorithms to automatically learn the structure of the data. An example of a neural network is depicted in Figure~\ref{figure:neural-net}. It has a network structure having,
+\subsubsection{Neural Networks}\index{Neural Networks}
+Neural networks are non-linear statistical data modeling tools, often used to model complex relationships between inputs and outputs or to find meaningful patterns in data. Because of this, a neural network is a semi-parametric approach to data analysis. Neural networks learn by example. The analyst gathers representative data, and then invokes training algorithms to automatically learn the structure of the data. It has a network structure having,
 \begin{itemize}
 \item Input layer -- This is the observed data that we are trying to discover a relationship to. The aim is to find how known inputs and possibly known outputs are related.
 \item Hidden layer -- The relationships between value pairs and the weights applied to them. Since the relationships may be complex, and be linked many ways through \emph{nodes}, there may multiple hidden layers. Sometimes, hidden layer is referred to in data mining literature as both a singular layer and as all layers collectively.
@@ -102,13 +102,6 @@ H(z)=
 \end{cases}
 \]
 
-\begin{figure}[tb]
-	\centering
-	\includegraphics[scale=.5]{neural-net}
-	\caption{Example of a neural network}
-	\label{figure:neural-net}
-\end{figure}
-
 A neural network having a hidden node works through,
 \[
 x_j = f_j(\alpha_j + \sum_{i \to j} w_{ij} x_i)
@@ -125,20 +118,18 @@ function. By a Heaviside function, we mean $f_o(z) = 1$ if $z > 0$ and $f_o(z) =
 y= f_o \Biggr[a_o + \sum_{j \to o} w_{jo} f_j \large( \alpha_j + \sum_{i \to j} w_{ij} x_i \large) \Biggr]
 \end{equation}
 
-\paragraph{Supervised Learning.} The task of knowledge discovery in databases (KDD)\index{knowledge discovery\\in databases (KDD)} allows the analyst to examine data and its relationship to functional forms in two ways. The first, is through \emph{supervised learning}.  We have a set of data pairs $(x, y)$, $x \in X$, $y \in Y$ and the goal is to find a function $f$ within a class of functions that relates to the pairs. This ``supervised'' method requires us to infer how the mapping implied by the data and the cost function is related to the mismatch between our mapping and the data.
+\paragraph{Supervised Learning.} The task of knowledge discovery in databases (KDD)\index{Knowledge Discovery\\in Databases (KDD)} allows the analyst to examine data and its relationship to functional forms in two ways. The first, is through \emph{supervised learning}.  We have a set of data pairs $(x, y)$, $x \in X$, $y \in Y$ and the goal is to find a function $f$ within a class of functions that relates to the pairs. This ``supervised'' method requires us to infer how the mapping implied by the data and the cost function is related to the mismatch between our mapping and the data.
 
-\paragraph{Unsupervised Learning.} By contrast, through \emph{unsupervised learning} we are given some data $x$, and a cost function $c(\cdot)$ which is minimized with respect to any function of $x$ and the network's output, $f$. The cost function is determined by the task formulation. In this method, we have little, if any, idea how the data are related. We let the data make the connection for us.
+\paragraph{Unsupervised learning.} By contrast, through \emph{unsupervised learning} we are given some data $x$, and a cost function $c(\cdot)$ which is minimized with respect to any function of $x$ and the network's output, $f$. The cost function is determined by the task formulation. In this method, we have little, if any, idea how the data are related. We let the data make the connection for us.
 
 \paragraph{Training and Forecasting.} Divide the data into training and forecasting subsamples. In the training subsample, build a few network systems. The forecasting is based on the accuracy of out-of-sample forecasts to select the ``best'' network. 
 
-\subsection{Complex Nonlinear Models}\label{spectral methods}
-\subsubsection{Cosine Seasonality}\index{spectral methods}
-In some markets, seasonal energy markets, for instance, there may be at least two seasonal factors \cite{pilipovic2007er}\index{Pilipovic, Dragana}.
-\margincomment[red]{These are examples of two-regime models.}
-The cosine function can capture these factors, requiring relatively few parameters -- the magnitude of the seasonal factor, and the time of year when it occurs. Here is a function that capture two different periodicities,
+\subsection{Complex Nonlinear Models}
+
+\subsubsection{Cosine Seasonality}
+In some markets, seasonal energy markets, for instance, there may be at least two seasonal factors \cite{pilipovic2007er}\index{Pilipovic, Dragana}. The cosine function can capture these factors, requiring relatively few parameters -- the magnitude of the seasonal factor, and the time of year when it occurs. Here is a function that capture two different periodicities,
 
 \begin{equation}
-\index{beta@$\beta$ (beta)!in regression}
 \overbrace{\beta_1 \cos(2 \pi (T-t^C_1))}^{annual} + \underbrace{\beta_2 \cos(4 \pi(T-t^C_2))}_{semi-annual}
 \label{eq:cos-season}
 \end{equation}
@@ -150,7 +141,7 @@ Using repetitive exponential functions is another way to model seasonality to ca
 \beta_1 \exp\Big({-\gamma_1 \big(rfc(T-t^C_1)\big)^2} \Big)+ \beta_2 \exp\Big({-\gamma_2 \big(rfc(T-t^C_2)\big)^2} \Big),
 \label{eq:exp-season}
 \end{equation}
-where the function $rfc$ is annually repetitive, and returns the annualized time to or from the closest center $t^C_i$ for seasonal factor $i$. The two seasonal factors in \eqref{eq:exp-season} each has a center at $t^C$, a magnitude $\beta$\index{beta@$\beta$ (beta)!in regression}, and a width of the seasonal peak defined by the ``decay'' coefficient $\gamma$.
+where the function $rfc$ is annually repetitive, and returns the annualized time to or from the closest center $t^C_i$ for seasonal factor $i$. The two seasonal factors in \eqref{eq:exp-season} each has a center at $t^C$, a magnitude $\beta$, and a width of the seasonal peak defined by the ``decay'' coefficient $\gamma$.
 
 %\subsection{Nonlinearity Testing}
 

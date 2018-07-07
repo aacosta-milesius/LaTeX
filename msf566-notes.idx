@@ -1,0 +1,121 @@
+\indexentry{Tsay, Ruey}{1}
+\indexentry{Time Series!definition}{1}
+\indexentry{Technical Analysis}{1}
+\indexentry{Exploratory Data Analysis}{1}
+\indexentry{Autocorrelation}{1}
+\indexentry{Sampling}{3}
+\indexentry{Sampling!Validity}{3}
+\indexentry{Sampling!Random}{3}
+\indexentry{Recursion|see{Recursion}}{3}
+\indexentry{Sampling!Systematic}{3}
+\indexentry{Sampling!Stratified}{4}
+\indexentry{Sampling!Convenience}{5}
+\indexentry{Validity!External}{5}
+\indexentry{Validity!Sampling}{5}
+\indexentry{Validity!Proximal Similarity}{6}
+\indexentry{Bloomberg}{6}
+\indexentry{Statistical Inference}{7}
+\indexentry{Point Estimation}{7}
+\indexentry{Interval Estimation}{7}
+\indexentry{Hypothesis Test}{7}
+\indexentry{Point Estimation}{7}
+\indexentry{Interval Estimation}{8}
+\indexentry{Hypothesis Test}{8}
+\indexentry{Null Hypothesis}{9}
+\indexentry{H0@$H_0$|see{Null Hypothesis}}{9}
+\indexentry{Alternative Hypothesis}{9}
+\indexentry{H1@$H_1$|see{Alternative Hypothesis}}{9}
+\indexentry{Level of Significance}{9}
+\indexentry{alpha@$\alpha$ (alpha)|see{Level of Significance}}{9}
+\indexentry{beta@$\beta$ (beta)!in hypothesis}{9}
+\indexentry{Z@$Z$-Test Statistic}{10}
+\indexentry{Matrix Math|see{Linear Algebra}}{11}
+\indexentry{Linear Algebra}{11}
+\indexentry{MATLAB}{11}
+\indexentry{R language}{11}
+\indexentry{MATLAB}{13}
+\indexentry{R language}{13}
+\indexentry{MATLAB}{14}
+\indexentry{MATLAB}{14}
+\indexentry{Tsay, Ruey}{14}
+\indexentry{read.table@\texttt{read.table} (in R)}{15}
+\indexentry{load@\texttt{load} (in MATLAB)}{15}
+\indexentry{dlmread@\texttt{dlmread} (in MATLAB)}{16}
+\indexentry{read.table@\texttt{read.table} (in R)}{16}
+\indexentry{attach@\texttt{attach} (in R)}{17}
+\indexentry{names@\texttt{names} (in R)}{17}
+\indexentry{with@\texttt{with} (in R)}{17}
+\indexentry{read.csv@\texttt{read.csv} (in R)}{17}
+\indexentry{Epoch Date}{17}
+\indexentry{datenum@\texttt{datenum} (in MATLAB)}{17}
+\indexentry{datestr@\texttt{datestr} (in MATLAB)}{17}
+\indexentry{datevec@\texttt{datevec} (in MATLAB)}{17}
+\indexentry{as.POSIXlt@\texttt{as.POSIXlt} (in R)}{18}
+\indexentry{plot@\texttt{plot} (in MATLAB)}{19}
+\indexentry{timeseries@\texttt{timeseries} (in MATLAB)}{19}
+\indexentry{tscollection@\texttt{tscollection} (in MATLAB)}{19}
+\indexentry{plot@\texttt{plot} (in R)}{19}
+\indexentry{ts@\texttt{ts} (in R)}{19}
+\indexentry{Perl Language}{20}
+\indexentry{Python Language}{20}
+\indexentry{XML}{20}
+\indexentry{HTML}{20}
+\indexentry{Tsay, Ruey}{22}
+\indexentry{Moment, (Random Variable)}{24}
+\indexentry{Tsay, Ruey}{27}
+\indexentry{Portmanteau test}{28}
+\indexentry{Box-Pierce test}{29}
+\indexentry{Ljung-Box test}{29}
+\indexentry{White Noise}{30}
+\indexentry{Time Series!white noise}{30}
+\indexentry{Partial Autocorrelation Function\\ (PACF)}{31}
+\indexentry{Akaike information criterion (AIC)}{32}
+\indexentry{Forecast origin}{33}
+\indexentry{Forecast horizon}{33}
+\indexentry{Mean reversion}{33}
+\indexentry{Simple Moving-Average Models}{34}
+\indexentry{ARMA Models}{35}
+\indexentry{Extended Autocorrelation Function \\(EACF)}{36}
+\indexentry{Unit-Root Nonstationarity}{37}
+\indexentry{Autoregressive Integrated\\ Moving-Average (ARIMA)}{38}
+\indexentry{Differencing}{38}
+\indexentry{Unit-root test}{38}
+\indexentry{Dickey-Fuller Test}{38}
+\indexentry{Seasonal Models}{39}
+\indexentry{Binary Variable|see{Dummy Variable}}{41}
+\indexentry{Dummy Variable}{41}
+\indexentry{Event Study}{42}
+\indexentry{Index Number}{42}
+\indexentry{Bureau of Labor Statistics (BLS)}{42}
+\indexentry{Base Period}{42}
+\indexentry{Base Value}{42}
+\indexentry{Time Series!trend and seasonality}{42}
+\indexentry{Tsay, Ruey}{44}
+\indexentry{Implied volatility}{44}
+\indexentry{Black-Scholes option pricing model}{44}
+\indexentry{Stochastic Volatility model}{44}
+\indexentry{Ljung-Box test}{45}
+\indexentry{Lagrange multiplier test}{45}
+\indexentry{Autoregressive Conditional \\ Heteroskedasticity (ARCH) model}{46}
+\indexentry{FinTS@\texttt{FinTS} (library in R)}{46}
+\indexentry{Generalized Autoregressive Conditional\\Heteroskedasticity (GARCH) model}{47}
+\indexentry{fGarch@\texttt{fGarch} (library in R)}{48}
+\indexentry{Integrated GARCH\\(IGARCH) model}{49}
+\indexentry{GARCH in Mean\\(GARCH-M) model}{50}
+\indexentry{Exponential GARCH\\(EGARCH) model}{50}
+\indexentry{Conditional Heteroskedasticity\\(CHARMA) model}{51}
+\indexentry{Stochastic Volatility model}{51}
+\indexentry{Heston model}{52}
+\indexentry{Tsay, Ruey}{53}
+\indexentry{Threshold Autoregressive\\(TAR) Model}{53}
+\indexentry{Markov autoregressive\\switching (MSA) model}{53}
+\indexentry{Nadaraya-Watson kernel regression}{54}
+\indexentry{Neural Networks}{54}
+\indexentry{Knowledge Discovery\\in Databases (KDD)}{56}
+\indexentry{Pilipovic, Dragana}{56}
+\indexentry{Tsay, Ruey}{57}
+\indexentry{Time Series!differing time periods}{57}
+\indexentry{Tsay, Ruey}{58}
+\indexentry{Wiener Process}{58}
+\indexentry{It\^{o}'s Lemma}{58}
+\indexentry{Stochastic Integrals}{58}

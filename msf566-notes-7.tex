@@ -1,149 +1,49 @@
 \section{High-Frequency Data Analysis}\label{High-Frequency}
 \paragraph{Primary Text Reading.} \citeA[chap. 5]{tsay2005aft}\index{Tsay, Ruey}
 
-\subsection{Nonsynchronous Trading}\index{time series!differing time periods}
-Up to this point, all \fts{} have had price or returns observations evenly spaced through time. For instance, every day, every week, or quarter, there has been exactly one observation. There have not been incidents of missing data, multiple observations in a time period, nor have observations been spaced apart at irregular intervals.
+\subsection{Nonsynchronous Trading}
 
-In reality, trading in many financial products results in price quotes that come in time intervals that mat vary widely throughout a trading session. Such price data are the results of \emph{nonsynchronous trading}. As a futures market opens, there may be an opening round where each contract month is initially priced with a bid and offer, and trading volume is exceedingly heavy during those first few minutes.  Afterwards, the market may have reached some level where trading is sporadic. The trading session may end with more heavy trading at the close.
-
-Now, compare two different products trading at the same time. They can be two stocks or two different futures contracts. Some news announcement effects the price of the two securities, but the security that is traded more frequently will seem to show the effects of the news more than the less-frequently-traded one. The more active security will appear to lead the less active. When performing some correlation between the two securities, it appear to exhibit some lag, although the securities are independent. The key implication is that it may induce serial correlations even when the underlying returns are iid\index{iid -- independent and\\identically distributed} 
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=.4]{libor-acf}
-	\caption[LIBOR future autocorrelation]{The autocorrelation of the LIBOR futures trading session changes}
-	\label{figure:libor-acf}
-\end{figure}
-
-We see in Figure~\ref{figure:libor-acf} that the trading session starts out with very strong autocorrelation, but quickly incorporates a great degree of random behavior, as evidenced by a sharply decreasing ACF. Afterwards, we see a very strong negative autocorrelation, which tapers off by the close of the session.
-
-\subsubsection{Bid/Offer Spread}
-It is important to understand how the bid-offer spread works in markets. Table~\ref{tab:bid-offer} shows a sample two-way price of 148.60/148.70 for some fictitious futures contract. The \emph{market maker} or specialist is willing to buy (\textit{bid}) from the trading public at 148.60, and is willing to sell (\textit{offer}) to the trading public at 148.70. All other market participants buy at the offered price and sell at the bid price. This spread exists to generate a profit for the market makers, to reward them for providing liquidity to a market.
-
-\begin{table}[bp]
-	\centering
-	\begin{tabular}{lrr}
-	\toprule
-	& Bid	& Offer \\
-	\hline
-	Sample Price  & 148.60 & 148.70 \\
-	Market Maker  &	Buy	  & Sell    \\ 
-	Trading Public &	Sell  & Buy     \\
-	\bottomrule
-	\end{tabular}
-   \caption{Bid and offer from two different perspectives}
-   \label{tab:bid-offer}
-\end{table}
-
-\subsubsection{Transaction Data}
-The text file \texttt{libor.txt} contains all trades for a given day in LIBOR futures. At some observations, there are more than one trade within a second, then several seconds may pass before another trade occurs. Performing analysis with a moving average assumes that the observations are equally spaced. For instance, we would need to modify our data so that we can record an observation for a single price for each ten seconds that passes.
-
-Keep in mind four characteristics of intraday trading data,
+Market microstructure: Why is it important? 
 \begin{enumerate}
-\item Unequally spaced time intervals -- Trades occur at different times of the session, and are not equally spaced. This makes \fts{} more difficult because most methods assume even time-spacing.
-\item Discrete-valued prices -- Prices will move by its tick size, which may be different for each futures or options contract. For equities, it is usually the smallest currency unit, such in the U.S. one cent (\$0.01) or in the U.K. (\pounds0.01) although its shares are denominated in \emph{pence}, not pounds.
-\item Daily price/volume pattern -- This is a reflection of trading intensity and the volume sometimes could be graphed to look ``U'' shaped, with trades occurring more frequently at the open and close, but less in the mid-day.
-\item Multiple transactions within a single second -- Markets with several market makers and especially electronic markets, will have multiple trades in a second.
+\item Important in market design \& operation, e.g. to compare different markets (NYSE vs NASDAQ) 
+\item To study price discovery, liquidity, volatility, etc. 
+\item To understand costs of trading 
+\item Important in learning the consequences of institutional arrangements on observed processes, e.g. 
+\begin{itemize}
+\item Nonsynchronous trading 
+\item Bid-ask bounce 
+\item Impact of changes in tick size, after-hour trading, etc. 
+\item Impact of daily price limits (many foreign markets) 
+\end{itemize}
 \end{enumerate}
 
-Making matters more complicated is that the spread, the difference between the bid and ask price, varies throughout the day. In the LIBOR futures contract, one tick is 0.0025. This means that the minimum price change is $\pm 0.0025$ from its previous price. In our trading data, we see bid/ask spreads changing randomly; at some points, the spread is zero. 
+Nonsynchronous trading: \index{Time Series!differing time periods}
+Key implication: may induce serial correlations even when the underlying returns are iid. 
 
-\paragraph{Market Liquidity and Volatility.} The more trades we see within a certain time frame, the more liquid we can expect that security to be. Clearly, trading more often means market availability is higher. If during those numerous trades during a short time span, we see wide variation of prices, we can conclude it is a volatile security. We can also determine the cost of trading by looking at the size of the bid/ask spread. If we wanted to get out of a losing trade, we have to keep close watch on the price to offset the trade.
+Setup: log returns ${r_t}$ are iid $(\mu, \sigma^2)$ 
+For each time index $t$, P(no trade) = $\pi$. 
+Cannot observe $r_t$ if there is no trade. 
+What is the observed log return series $r^o_t$? 
+It turns out $r^o_t$ is given in Tsay Eq. (5.1), 
+% TODO: page 11 of lec7-08.pdf
 
-\paragraph{Bid/Ask Bounce.} The bid/ask bounce is the term used to describe this transitory bouncing back and forth of the price between the bid and the ask prices. It does not reflect price changes necessarily, but different types of market participants making trades at essentially the same two-way price. Bid/ask bounce can create the illusion of a price change when in fact there was not really a change. In a market, interested buyers of post the bid, and interested sellers post the ask. Consider a security that closed yesterday at 148.60, with a bid of 148.60 and an ask of 148.70. Today, there is absolutely no news for the security, but it does trade once: a buy order comes through, at the ask of 148.70 dollar. The price of the stock at today's close then becomes 148.70 dollar, an increase from yesterday. Yet the market's opinion of the security -- what it is willing to pay to buy the shares, and what it is willing to accept to sell the shares, has not changed. 
+\subsection{Bid-Ask Spread}
+
+\subsection{Transaction Data}
 
 \subsection{Price Change Models}
-Because price changes are discrete and often make little if any move from one trade to the next, it is difficult to model the intraday trading activity. However, a few models have been proposed to help model these changes. We look at two of them, \emph{ordered probit model} and \emph{decomposition model}.
 
-\paragraph{Intraday Volatility.} Some newer approaches to volatility estimation are currently under intensive study. It is still too early to assess the impact of these methods. It is a good idea in general to use more information.  Recall that volatility during the trading session is often linked to how many trades are occurring within a narrow time frame. Interday volatility, the volatility that spans several days is, by contrast, variance for a fixed time frame.
-
-\subsubsection{Ordered Probit Model}\index{probit model}
-The ordered probit model assumes a probit model of discrete tick movements within a continuous random variable, following the model of $y^*_i$ as the unobservable price change
-\begin{equation}
-y^*_i =x_i \beta +\eta_i,
-\label{eq:ordered-probit}
-\end{equation}
-where $x_i$ is a $p$-dimensional row vector of explanatory variables available at time $t_{i-1}$, $\beta$ is $p \times 1$ parameter vector, $E(\epsilon_i | x_i)=0, \text{Var}(\epsilon_i | x_i)=\sigma^2_i$, and $\text{Cov}(\epsilon_i, \epsilon_j)=0$ for $i \ne j$. The conditional variance $\sigma^2_i$ is assumed to be a positive function of the explanatory variable $\mathbf{w}_i$,
-\[
-\sigma^2_i = g(\mathbf{w}_i),
-\]
-where $g(\cdot)$ is a positive function. We can use \eqref{eq:ordered-probit} to model the expected price changes. The probit model assumes,
-\[
- \Pr(Y=1|X=x) = \Phi(x'\beta),
-\]
-where $\Phi$ is the cumulative distribution function of the standard normal distribution. The parameters $\beta$ are typically estimated by maximum likelihood.
-
+\subsubsection{Ordered Probit Model}
 
 \subsubsection{Decomposition Model}
-An alternative to probit is to decompose price changes into three components and use conditional specifications for the components. The three components are,
-\begin{enumerate}
-\item indicator of price change $A_i$
-\item direction of a price movement $D_i$
-\item size of price change $S_i$
-\end{enumerate}
-The price change at the $i$th transaction can be written as
-\[
-y_i \equiv P_{t_{i-1}} = A_i D_i S_i,
-\]
-where $A_i$ is a binary variable defined as
-\[
-A_i =
-\begin{cases}
-	1 & \text{if there is a price change at $i$th trade},\\
-	0 & \text{if the price remains the same at $i$th trade}.
-\end{cases}
-\]
-$D_i$ is the direction of price movement
-\[
-D_i|(A_i=1) =
-\begin{cases}
-	\phantom{-}1  & \text{if the price change at the $i$th trade is \emph{up}},\\
-	-1 & \text{if the price change at the $i$th trade is \emph{down}},
-\end{cases}
-\]
-and $S_i$ is the size of price change in ticks
-\[
-S_i =
-\begin{cases}
-	\phantom{number}0 & \text{if there is no price change at the $i$th trade}, \\
-	\text{number of ticks} & \text{if there is a price change at the $i$th trade}.
-\end{cases}
-\]
-Because $A_i$ and $D_i$ are binary variables, they follow a logistic distribution \eqref{eq:logistic}.
-
-In the end, we will have one of three different outcomes,
-\begin{enumerate}
-\item No price change: $A_i=0$, and its probability is $(1-p_i)$.
-\item Price increase: $A_i=1, D_i=1$, and its probability is $p_i \delta_i$. The size of the price increase is governed by $1+g(\lambda_{u,i})$.
-\item Price decrease: $A_i=1, D_i=-1$, and its probability is $p_i(1-\delta_i)$. The size of the price decrease is governed by $1+g(\lambda_{d,i})$.
-\end{enumerate}
-
-\bigskip
-Other explanatory variables that may be used in a decomposition model could be,
-\begin{itemize}
-\item time duration between trades,
-\item volume of last trade,
-\item bid/ask spread,
-\item other \emph{exogenous} variables that may effect the security's price.
-\end{itemize}
 
 \subsection{Duration Models}
-Next, we switch to \emph{duration models}, which are concerned with the time interval between trades during the trading session. Long time intervals indicate a lack of information about the security. We can model the duration in a similar manner to ARCH models for volatility. We begin with the adjusted time duration
-\[
-\Delta t^*_i = \Delta t_i / f(t_i),
-\]
-where $f(t_i)$ is a deterministic function consisting of the cyclical component of $\Delta t_i$. There are several ways to estimate $f(t_i)$, such as a cubic spline. One method generally consists of a least squares method of linear regression of intraday trading duration information.
 
-\subsubsection{ACD Model}\index{autoregressive conditional\\duration (ACD) model}
-The autoregressive conditional duration (ACD) model uses concepts from GARCH to study adjusted duration $\Delta t^*_i$. Let $\psi_i=E(x_i | F_{i-1})$ be the conditional expectation of the adjusted duration between the $(i-1)$th and the $i$th trades, where $F_{i-1}$ is the information set available at the $(i-1)$th trade. Then, the basic ACD model is
-\[
-x_i = \psi_i \epsilon_i,
-\]
-where $\{\epsilon_i\}$ is a sequence of iid \index{iid -- independent and\\identically distributed} non-negative random variables such that $E(\epsilon_i)=1$.
+\subsubsection{ACD Model}
 
-%\subsubsection{Simulation}
+\subsubsection{Simulation}
 
-%\subsubsection{Estimation}
+\subsubsection{Estimation}
 
-\subsubsection{Nonlinear Duration Models}
-High-frequency data often exhibits nonlinear behavior, so it is reasonable to apply a nonlinear duration model and compare the difference to linear models.  We can use the methods from Section~\ref{tar-model} on TAR model to observe nonlinear effects. The duration model may be two-regime to start, until perhaps more breaks in the duration \fts{} is discovered.
+\subsection{Nonlinear Duration Models}
+

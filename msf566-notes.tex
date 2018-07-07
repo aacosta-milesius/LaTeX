@@ -1,4 +1,4 @@
-\documentclass[11pt,twoside]{article}
+\documentclass [11pt]{article}
 \usepackage{setspace,amssymb,latexsym,amsmath,amscd,epsfig,amsthm}
 \usepackage{array,color}
 \usepackage[english]{babel}
@@ -7,12 +7,10 @@
 \usepackage{apacite}
 
 \newcommand{\fts}{financial time series}
-\newcommand{\Rversion}{2.9.0} %% CHANGE Whenever the version of R changes
-
 \newcommand{\margincomment}[2][blue]{\marginpar{\begin{small}\begin{flushleft}\textcolor{#1}{#2}\end{flushleft}\end{small}}}
 
 %\newcommand\citeA[1]{\cite{#1}} % If I don't use name-year, I need a \citeA tag.
-%\usepackage[left=2.5cm,top=2.5cm,right=4cm]{geometry}
+\usepackage[left=2.5cm,top=2.5cm,right=4cm]{geometry}
 %\usepackage{moreverb} % Used for line-numbered verbatim text listings.
 \graphicspath{{./images/}}
 
@@ -24,14 +22,9 @@
 \newcommand\l@example[2] {\par\noindent#1~\dotfill\textmd{#2}\par} \makeatother
 %
 
-% List of R Packages
-\newcommand\rpkg[1]{\addcontentsline{Rpkg}{rpkg}{#1}}
-\makeatletter \newcommand\listofrpkgs {\section*{R Packages}\@starttoc{Rpkg}}
-\newcommand\l@rpkg[2] {\par\noindent#1~\dotfill\textmd{#2}\par} \makeatother
-%
-
 % Only make the document for the sections as needed
-%\includeonly{msf566-notes-3}
+\includeonly{msf566-notes-1, msf566-notes-2,msf566-notes-3,msf566-notes-4,
+msf566-notes-5, msf566-notes-6, msf566-notes-7,msf566-notes-8}%,msf566-notes-9}
 
 % SOURCES
 % http://faculty.chicagogsb.edu/ruey.tsay/teaching/bs41202/sp2008/
@@ -39,28 +32,28 @@
 
 \begin{document}
 \pagestyle{myheadings}
-\markboth{Financial Time Series Analysis}{MSF 566 Lecture Notes}
-\title{MSF 566 - Financial Time Series Analysis \\ Spring 2009 \\ Lecture Notes}
+\markright{MSF 566 Lecture Notes}
+\title{MSF 566 - Financial Time Series Analysis  \\ Lecture Notes}
 \author{Andrew P. Acosta}
-\date{}
+%\date{}.
 
 \pagenumbering{roman}
 \maketitle
-\thanks{The following collection of notes is the work product and intellectual property of Andrew P. Acosta. It is shared freely with the assumption that they not be relied upon as a primary source of research. Any errors found are his alone. Please send any comments and advice on errors and omissions to the author at \texttt{aacosta@stuart.iit.edu}. \\
-\tiny{Document typeset using \AmS{}-\LaTeX{} on \today{}.}}
+\thanks{The following collection of notes is the work product and intellectual property of \mbox{Andrew P. Acosta}. It is shared freely with the assumption that they not be relied upon as a primary source of research. Any errors found are his alone. Please send any comments and advice on errors and omissions you found to the author at \texttt{andrew@acm.org}. \linebreak
+\tiny{Document typeset using \AmS{}-\LaTeX{}.}}
 
 \tableofcontents
 \clearpage
 \listoffigures
 
-\newpage
+\pagebreak
 \listoftables
+%\clearpage
+%\section*{List of Examples}
 
-\newpage
+\pagebreak
 \listofexamples
-\newpage
-\listofrpkgs
-\cleardoublepage
+\clearpage
 
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
@@ -68,6 +61,8 @@
 
 \pagenumbering{arabic}
 \include{msf566-notes-1}
+%\nocite{bollerslev1987cht}
+%\typeout{nocite being used for no reason by Andrew.}
 \include{msf566-notes-2}
 \include{msf566-notes-3}
 \include{msf566-notes-4}
@@ -88,6 +83,6 @@
 
 \clearpage
 \addcontentsline{toc}{section}{Index}
-\markboth{Index}{Index}
+\markright{Index}
 \printindex
 \end{document} 

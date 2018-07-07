@@ -1,0 +1,412 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Bollerslev%
+}{%
+Bollerslev%
+}{%
+{\protect \APACyear {1986}}%
+}]{%
+bollerslev1986garch}
+\APACinsertmetastar {%
+bollerslev1986garch}%
+\begin{APACrefauthors}%
+Bollerslev, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1986}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Generalized Autoregressive Conditional
+  Heteroskedasticity} {Generalized autoregressive conditional
+  heteroskedasticity}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Econometrics}{31}{}{307--327}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Crawley%
+}{%
+Crawley%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+Rbook}
+\APACinsertmetastar {%
+Rbook}%
+\begin{APACrefauthors}%
+Crawley, M\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2007}.
+\newblock
+\APACrefbtitle {{The R Book}} {{The R Book}}.
+\newblock
+\APACaddressPublisher{Hoboken, NJ}{Wiley}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Engle%
+}{%
+Engle%
+}{%
+{\protect \APACyear {1982}}%
+}]{%
+engle1982arch}
+\APACinsertmetastar {%
+engle1982arch}%
+\begin{APACrefauthors}%
+Engle, R\BPBI F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1982}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Autoregressive Conditional Heteroscedasticity with
+  Estimates of Variance of {U}nited {K}ingdom Inflation} {Autoregressive
+  conditional heteroscedasticity with estimates of variance of {U}nited
+  {K}ingdom inflation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Econometrica}{50}{}{987--1008}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Franses%
+\ \BBA {} {van Dijk}%
+}{%
+Franses%
+\ \BBA {} {van Dijk}%
+}{%
+{\protect \APACyear {2000}}%
+}]{%
+franses2000nlts}
+\APACinsertmetastar {%
+franses2000nlts}%
+\begin{APACrefauthors}%
+Franses, P\BPBI H.%
+\BCBT {}\ \BBA {} {van Dijk}, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2000}.
+\newblock
+\APACrefbtitle {Non-Linear Time Series Models in Empirical Finance} {Non-linear
+  time series models in empirical finance}.
+\newblock
+\APACaddressPublisher{Cambridge, UK}{Cambridge University Press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Graves%
+}{%
+Graves%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+fints-R}
+\APACinsertmetastar {%
+fints-R}%
+\begin{APACrefauthors}%
+Graves, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{FinTS}: Companion to {T}say (2005) {A}nalysis of
+  Financial Time Series} {{FinTS}: Companion to {T}say (2005) {A}nalysis of
+  financial time series}{\BBCQ}\ [\bibcomputersoftwaremanual].
+\newblock
+\begin{APACrefURL} \url{http://www.r-project.org} \end{APACrefURL}
+\newblock
+\APACrefnote{R package version 0.3-6}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Levine%
+, Stephan%
+, Krehbiel%
+\BCBL {}\ \BBA {} Berenson%
+}{%
+Levine%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2004}}%
+}]{%
+levine-2004sme}
+\APACinsertmetastar {%
+levine-2004sme}%
+\begin{APACrefauthors}%
+Levine, D\BPBI M.%
+, Stephan, D.%
+, Krehbiel, T\BPBI C.%
+\BCBL {}\ \BBA {} Berenson, M\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2004}.
+\newblock
+\APACrefbtitle {Statistics for Managers using {M}icrosoft {E}xcel} {Statistics
+  for managers using {M}icrosoft {E}xcel}\ (\PrintOrdinal{4th}\ \BEd).
+\newblock
+\APACaddressPublisher{Upper Saddle River, NJ}{Prentice Hall}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Martinez%
+\ \BBA {} Martinez%
+}{%
+Martinez%
+\ \BBA {} Martinez%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+martinez2008csh}
+\APACinsertmetastar {%
+martinez2008csh}%
+\begin{APACrefauthors}%
+Martinez, W\BPBI L.%
+\BCBT {}\ \BBA {} Martinez, A\BPBI R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2008}.
+\newblock
+\APACrefbtitle {Computational Statistics with {MATLAB}} {Computational
+  statistics with {MATLAB}}\ (\PrintOrdinal{2nd}\ \BEd).
+\newblock
+\APACaddressPublisher{New York}{Chapman \& Hall/CRC}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pilipovic%
+}{%
+Pilipovic%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+pilipovic2007er}
+\APACinsertmetastar {%
+pilipovic2007er}%
+\begin{APACrefauthors}%
+Pilipovic, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2007}.
+\newblock
+\APACrefbtitle {Energy Risk: Valuing and Managing Energy Derivatives} {Energy
+  risk: Valuing and managing energy derivatives}\ (\PrintOrdinal{2nd}\ \BEd).
+\newblock
+\APACaddressPublisher{New York}{McGraw-Hill}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pyle%
+}{%
+Pyle%
+}{%
+{\protect \APACyear {1999}}%
+}]{%
+pyle1999dpd}
+\APACinsertmetastar {%
+pyle1999dpd}%
+\begin{APACrefauthors}%
+Pyle, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1999}.
+\newblock
+\APACrefbtitle {Data Preparation for Data Mining} {Data preparation for data
+  mining}.
+\newblock
+\APACaddressPublisher{San Francisco}{Morgan-Kaufmann}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{R Development Core Team}%
+}{%
+{R Development Core Team}%
+}{%
+{\protect \APACyear {2008}}%
+}]{%
+Rmanual}
+\APACinsertmetastar {%
+Rmanual}%
+\begin{APACrefauthors}%
+{R Development Core Team}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {R: A Language and Environment for Statistical Computing}
+  {R: A language and environment for statistical computing}{\BBCQ}\
+  [\bibcomputersoftwaremanual].
+\newblock
+\APACaddressPublisher{Vienna, Austria}{}.
+\newblock
+\begin{APACrefURL} \url{http://www.R-project.org} \end{APACrefURL}
+\newblock
+\APACrefnote{{ISBN} 3-900051-07-0}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Rogers%
+}{%
+Rogers%
+}{%
+{\protect \APACyear {1998}}%
+}]{%
+rogers-1998}
+\APACinsertmetastar {%
+rogers-1998}%
+\begin{APACrefauthors}%
+Rogers, M\BPBI R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1998}.
+\newblock
+\APACrefbtitle {Handbook of Key Economic Indicators} {Handbook of key economic
+  indicators}\ (\PrintOrdinal{2nd}\ \BEd).
+\newblock
+\APACaddressPublisher{New York}{McGraw-Hill}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tsay%
+}{%
+Tsay%
+}{%
+{\protect \APACyear {2005}}%
+}]{%
+tsay2005aft}
+\APACinsertmetastar {%
+tsay2005aft}%
+\begin{APACrefauthors}%
+Tsay, R\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2005}.
+\newblock
+\APACrefbtitle {Analysis of financial time series} {Analysis of financial time
+  series}\ (\PrintOrdinal{2nd}\ \BEd).
+\newblock
+\APACaddressPublisher{Hoboken, NJ}{Wiley}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Tsay%
+\ \BBA {} Tiao%
+}{%
+Tsay%
+\ \BBA {} Tiao%
+}{%
+{\protect \APACyear {1984}}%
+}]{%
+tsaytiao1984eacf}
+\APACinsertmetastar {%
+tsaytiao1984eacf}%
+\begin{APACrefauthors}%
+Tsay, R\BPBI S.%
+\BCBT {}\ \BBA {} Tiao, G\BPBI C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1984}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Consistent Estimates of Autoregressive Parameters and
+  Extended Sample Autocorrelation Function for Stationary and Nonstationary
+  {ARMA} Models} {Consistent estimates of autoregressive parameters and
+  extended sample autocorrelation function for stationary and nonstationary
+  {ARMA} models}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of the American Statistical
+  Association}{79}{385}{84--96}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wuertz%
+\ \protect \BOthers {.}}{%
+Wuertz%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+{\protect \APACexlab {{\protect \BCnt {1}}}}}]{%
+farma-R}
+\APACinsertmetastar {%
+farma-R}%
+\begin{APACrefauthors}%
+Wuertz, D.%
+\BCBT {}\ \BOthersPeriod {.}
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007{\protect \BCnt {1}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{fArma}: {R}metrics - {ARMA} Time Series Modelling}
+  {{fArma}: {R}metrics - {ARMA} time series modelling}{\BBCQ}\
+  [\bibcomputersoftwaremanual].
+\newblock
+\begin{APACrefURL} \url{http://www.rmetrics.org} \end{APACrefURL}
+\newblock
+\APACrefnote{R package version 260.72}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wuertz%
+\ \protect \BOthers {.}}{%
+Wuertz%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+{\protect \APACexlab {{\protect \BCnt {2}}}}}]{%
+fgarch-R}
+\APACinsertmetastar {%
+fgarch-R}%
+\begin{APACrefauthors}%
+Wuertz, D.%
+\BCBT {}\ \BOthersPeriod {.}
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007{\protect \BCnt {2}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{fGarch}: {R}metrics - Autoregressive Conditional
+  Heteroskedastic Modelling} {{fGarch}: {R}metrics - autoregressive conditional
+  heteroskedastic modelling}{\BBCQ}\ [\bibcomputersoftwaremanual].
+\newblock
+\begin{APACrefURL} \url{http://www.rmetrics.org} \end{APACrefURL}
+\newblock
+\APACrefnote{R package version 260.72}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Wuertz%
+\ \protect \BOthers {.}}{%
+Wuertz%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2007}}%
+{\protect \APACexlab {{\protect \BCnt {3}}}}}]{%
+fseries-R}
+\APACinsertmetastar {%
+fseries-R}%
+\begin{APACrefauthors}%
+Wuertz, D.%
+\BCBT {}\ \BOthersPeriod {.}
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007{\protect \BCnt {3}}}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{fSeries}: {R}metrics - Financial Time Series Objects}
+  {{fSeries}: {R}metrics - financial time series objects}{\BBCQ}\
+  [\bibcomputersoftwaremanual].
+\newblock
+\begin{APACrefURL} \url{http://www.rmetrics.org} \end{APACrefURL}
+\newblock
+\APACrefnote{R package version 260.73}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

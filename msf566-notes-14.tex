@@ -1,20 +1,2 @@
 \section{Markov Chain Monte Carlo Methods}
 \paragraph{Primary Text Reading.} \citeA[chap. 12]{tsay2005aft}\index{Tsay, Ruey}
-
-\subsection{Markov Chain Monte Carlo}
-Markov chain Monte Carlo (MCMC)\index{Markov chain Monte Carlo (MCMC)} methods (which include random walk Monte Carlo methods), are a class of algorithms for sampling from probability distributions based on constructing a Markov chain that has the desired distribution as its equilibrium distribution. The state of the chain after a large number of steps is then used as a sample from the desired distribution. The quality of the sample improves as a function of the number of steps.
-
-Usually it is not hard to construct a Markov Chain with the desired properties. The more difficult problem is to determine how many steps are needed to converge to the stationary distribution within an acceptable error. A good chain will have rapid mixing--the stationary distribution is reached quickly starting from an arbitrary position--described further under Markov chain mixing time.
-
-Typical use of MCMC sampling can only approximate the target distribution, as there is always some residual effect of the starting position. More sophisticated MCMC-based algorithms such as coupling from the past can produce exact samples, at the cost of additional computation and an unbounded (though finite in expectation) running time.
-
-The most common application of these algorithms is numerically calculating multi-dimensional integrals. In these methods, an ensemble of ``walkers'' moves around randomly. At each point where the walker steps, the integrand value at that point is counted towards the integral. The walker then may make a number of tentative steps around the area, looking for a place with reasonably high contribution to the integral to move into next. Random walk methods are a kind of random simulation or Monte Carlo method. However, whereas the random samples of the integrand used in a conventional Monte Carlo integration are statistically independent, those used in MCMC are correlated. A Markov chain is constructed in such a way as to have the integrand as its equilibrium distribution. Surprisingly, this is often easy to do.
-
-\subsection{Random Walk Algorithms}
-Many Markov chain Monte Carlo methods move around the equilibrium distribution in relatively small steps, with no tendency for the steps to proceed in the same direction. These methods are easy to implement and analyse, but unfortunately it can take a long time for the walker to explore all of the space. The walker will often double back and cover ground already covered. Here are some random walk MCMC methods,
-\begin{description}
-\item[Metropolis-Hastings algorithm.]\index{Metropolis-Hastings algorithm} Generates a random walk using a proposal density and a method for rejecting proposed moves.
-\item[Gibbs sampling.]\index{Gibbs sampling} Requires that all the conditional distributions of the target distribution can be sampled exactly. Popular partly because when this is so, the method does not require any `tuning'.
-\item[Slice sampling.] Depends on the principle that one can sample from a distribution by sampling uniformly from the region under the plot of its density function. This method alternates uniform sampling in the vertical direction with uniform sampling from the horizontal `slice' defined by the current vertical position.
-\item[Multiple-try Metropolis.] A variation of the Metropolis-Hastings algorithm that allows multiple trials at each point. This allows the algorithm to generally take larger steps at each iteration, which helps combat problems intrinsic to large dimensional problems.
-\end{description}
